@@ -15,7 +15,7 @@ accounts-password@1.5.1
 ############ Your Packages ############
 
 core
-collection-admin
-layout
+# collection-admin
+# layout
 menu
-users-admin
+# users-admin

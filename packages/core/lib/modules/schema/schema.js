@@ -14,11 +14,11 @@ const schema = {
       return new Date();
     }
   },
-
   foobar: {
     type: String,
-    optional: true,
-    viewableBy: ["guests"]
+    viewableBy: ["members"],
+    editableBy: ["members"],
+    insertableBy: ["members"]
   }
   // userId: {
   //   type: String,
