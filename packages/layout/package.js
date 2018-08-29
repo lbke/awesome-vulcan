@@ -1,10 +1,11 @@
 Package.describe({
-  name: 'layout',
+  name: "layout"
 });
 
-Package.onUse((api) => {
-  api.use(['vulcan:core']);
+Package.onUse(api => {
+  api.use(["vulcan:core", "erikdakoda:vulcan-material-ui"]);
 
-api.mainModule('lib/server/main.js', 'server');
-api.mainModule('lib/client/main.js', 'client');
+  //api.addFiles([], "client");
+  api.mainModule("lib/server/main.js", "server");
+  api.mainModule("lib/client/main.js", "client");
 });

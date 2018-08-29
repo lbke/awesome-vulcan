@@ -5,6 +5,7 @@ vulcan:core@1.11.2
 ############ Language Packages ############
 
 vulcan:i18n-en-us
+vulcan:ui-bootstrap
 
 ############ Accounts Packages ############
 
@@ -16,6 +17,7 @@ accounts-password@1.5.1
 
 core
 # collection-admin
-# layout
+layout
 menu
 # users-admin
+erikdakoda:vulcan-material-ui
