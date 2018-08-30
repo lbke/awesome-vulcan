@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PureComponent } from "react";
 import {
   registerComponent,
   Components,
@@ -21,21 +21,26 @@ import {
  */
 const setupItemDetailsComponent = collection => {
   const componentName = getDetailsComponentName(collection);
-  const component = ({ loading, document, currentUser }) => (
-    <Components.CollectionItemDetails
-      collection={collection}
-      baseRoute="/users"
-      FormComponentName={getFormComponentName(collection)}
-      displayedSchemaFields={Object.keys(collection.options.schema).map(
-        key => ({
-          name: key,
-          ...collection.options.schema[key]
-        })
-      )}
-      loading={loading}
-      document={document}
-    />
-  );
+  const component = class DetailsComponent extends PureComponent {
+    render() {
+      const { loading, document, currentUser } = this.props;
+      return (
+        <Components.CollectionItemDetails
+          collection={collection}
+          baseRoute="/users"
+          FormComponentName={getFormComponentName(collection)}
+          displayedSchemaFields={Object.keys(collection.options.schema).map(
+            key => ({
+              name: key,
+              ...collection.options.schema[key]
+            })
+          )}
+          loading={loading}
+          document={document}
+        />
+      );
+    }
+  };
   component.displayName = componentName;
   const options = {
     collection
@@ -53,18 +58,23 @@ const setupItemDetailsComponent = collection => {
  */
 const setupFormComponent = collection => {
   const componentName = getFormComponentName(collection);
-  const component = ({ currentUser, documentId, params, ...otherProps }) => (
-    <Components.CollectionItemForm
-      collection={collection}
-      mutationFragment={getFragmentName(collection)}
-      queryFragment={getFragmentName(collection)}
-      documentId={documentId || params.documentId}
-      baseRoute={getBaseRoute(collection)}
-      {...otherProps}
-      params={params}
-      //fields={["email", "username", "groups", "isAdmin"]}
-    />
-  );
+  const component = class ItemComponent extends PureComponent {
+    render() {
+      const { currentUser, documentId, params, ...otherProps } = this.props;
+      return (
+        <Components.CollectionItemForm
+          collection={collection}
+          mutationFragment={getFragmentName(collection)}
+          queryFragment={getFragmentName(collection)}
+          documentId={documentId || params.documentId}
+          baseRoute={getBaseRoute(collection)}
+          {...otherProps}
+          params={params}
+          //fields={["email", "username", "groups", "isAdmin"]}
+        />
+      );
+    }
+  };
   component.displayName = componentName;
 
   registerComponent(componentName, component, withCurrentUser);
@@ -72,15 +82,20 @@ const setupFormComponent = collection => {
 };
 
 const setupListComponent = collection => {
-  const component = ({ results = [], loading }) => (
-    <Components.CollectionPage
-      collection={collection}
-      //loading={loading}
-      results={results}
-      baseRoute={getBaseRoute(collection)}
-      check={Users.isAdmin}
-    />
-  );
+  const component = class ListComponent extends PureComponent {
+    render() {
+      const { results = [], loading } = this.props;
+      return (
+        <Components.CollectionPage
+          collection={collection}
+          //loading={loading}
+          results={results}
+          baseRoute={getBaseRoute(collection)}
+          check={Users.isAdmin}
+        />
+      );
+    }
+  };
 
   const options = {
     collection: collection,
