@@ -7,6 +7,7 @@ import {
   withList
 } from "meteor/vulcan:core";
 import Users from "meteor/vulcan:users";
+import merge from "lodash/merge";
 import setupCollectionAdminRoutes from "./setupCollectionAdminRoutes";
 import {
   getDetailsComponentName,
@@ -81,7 +82,7 @@ const setupFormComponent = collection => {
   return component;
 };
 
-const setupListComponent = collection => {
+const setupListComponent = (collection, options) => {
   const component = class ListComponent extends PureComponent {
     render() {
       const { results = [], loading } = this.props;
@@ -92,12 +93,13 @@ const setupListComponent = collection => {
           results={results}
           baseRoute={getBaseRoute(collection)}
           check={Users.isAdmin}
+          basicColumns={options.list.basicColumns}
         />
       );
     }
   };
 
-  const options = {
+  const withListOptions = {
     collection: collection,
     fragmentName: getFragmentName(collection),
     limit: 6
@@ -105,18 +107,24 @@ const setupListComponent = collection => {
 
   const componentName = getListComponentName(collection);
   component.displayName = componentName;
-  registerComponent(componentName, component, [withList, options]);
+  registerComponent(componentName, component, [withList, withListOptions]);
   return component;
 };
 
-const setupCollectionAdminPages = collection => {
+const defaultOptions = {
+  list: {},
+  details: {},
+  form: {}
+};
+const setupCollectionAdminPages = (collection, options) => {
+  const mergedOptions = merge(defaultOptions, options);
   // register list page
-  setupListComponent(collection);
+  setupListComponent(collection, mergedOptions);
   // register detail page
-  setupItemDetailsComponent(collection);
+  setupItemDetailsComponent(collection, mergedOptions);
   // register new/edit form page
-  setupFormComponent(collection);
+  setupFormComponent(collection, mergedOptions);
   // setup the routes
-  setupCollectionAdminRoutes(collection);
+  setupCollectionAdminRoutes(collection, mergedOptions);
 };
 export default setupCollectionAdminPages;
