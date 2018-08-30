@@ -1,2 +1,3 @@
-import './routes';
-import './components';
+import "./routes";
+import "./components";
+import "../config";

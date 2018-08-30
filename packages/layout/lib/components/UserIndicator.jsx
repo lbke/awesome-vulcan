@@ -16,7 +16,8 @@ const UserIndicator = ({ currentUser, router }) =>
     <Button
       color="inherit"
       onClick={() => {
-        Accounts.logout();
+        // TODO: develop a signout method
+        Accounts.logout(Accounts.ui._options.onSignedOutHook);
       }}
     >
       Déconnexion
