@@ -16,6 +16,7 @@ accounts-password@1.5.1
 ############ Your Packages ############
 
 core
+config
 # collection-admin
 layout
 menu
