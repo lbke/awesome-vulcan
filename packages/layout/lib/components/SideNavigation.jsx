@@ -21,6 +21,8 @@ import HomeIcon from "mdi-material-ui/Home";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Users from "meteor/vulcan:users";
 
+import { getMenuItems } from "meteor/menu";
+
 const styles = theme => ({
   root: {},
   nested: {
@@ -44,6 +46,8 @@ class SideNavigation extends React.Component {
     const classes = this.props.classes;
     const isOpen = this.state.isOpen;
 
+    const menuItems = getMenuItems();
+
     return (
       <div className={classes.root}>
         <List>
@@ -59,6 +63,20 @@ class SideNavigation extends React.Component {
             <ListItemText inset primary="Home" />
           </ListItem>
         </List>
+
+        {menuItems.length > 0 && (
+          <List>
+            {menuItems.map(({ label, path }) => (
+              <ListItem
+                key={label}
+                button
+                onClick={() => browserHistory.push(path)}
+              >
+                <ListItemText primary={label} />
+              </ListItem>
+            ))}
+          </List>
+        )}
 
         {Users.isAdmin(currentUser) && (
           <div>

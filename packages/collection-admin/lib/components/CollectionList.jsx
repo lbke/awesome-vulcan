@@ -103,7 +103,8 @@ const buildActionsColumn = ({
 const getCollectionSchema = collection => collection.options.schema;
 const getDefaultColumns = collection =>
   Object.keys(getCollectionSchema(collection));
-export const CollectionPage = ({
+
+export const CollectionList = ({
   results = [],
   currentUser,
   loading,
@@ -134,12 +135,14 @@ export const CollectionPage = ({
     <div direction="column" style={{ width: "100%" }}>
       {collection.options.mutations.new.check(currentUser) ? (
         <div px={16} py={24}>
-          <Link to={`${baseRoute}${newRoute}`}>
-            <Components.Button variant="contained" color="secondary">
-              <PlusIcon />
-              {addText}
-            </Components.Button>
-          </Link>
+          <Components.Button
+            href={`${baseRoute}${newRoute}`}
+            variant="contained"
+            color="secondary"
+          >
+            <PlusIcon />
+            {addText}
+          </Components.Button>
         </div>
       ) : null}
       <div>
@@ -184,5 +187,5 @@ export const CollectionPage = ({
   </Components.ShowIf>
 );
 
-export default CollectionPage;
-registerComponent("CollectionPage", CollectionPage, withCurrentUser);
+export default CollectionList;
+registerComponent("CollectionList", CollectionList, withCurrentUser);

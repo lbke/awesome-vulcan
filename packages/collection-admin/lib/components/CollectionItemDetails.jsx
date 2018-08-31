@@ -14,7 +14,9 @@ import {
   Loading,
   withCurrentUser
 } from "meteor/vulcan:core";
-import { Link } from "react-router";
+import PencilIcon from "mdi-material-ui/Pencil";
+
+import { getCollectionName } from "../modules/namingHelpers";
 
 const CollectionItemDetails = ({
   loading,
@@ -25,35 +27,34 @@ const CollectionItemDetails = ({
   collection,
 
   editText = "Editer",
-  headerText = "Item",
+  headerText,
 
-  FormComponent,
-
-  displayedSchemaFields = []
+  fields
 }) => {
   return loading ? (
     <Loading />
   ) : (
     <div direction="column" style={{ width: "100%" }}>
       {collection.options.mutations.edit.check(currentUser, document) ? (
-        <div px={16} py={24}>
-          <Link to={`${baseRoute}/${document._id}${editRoute}`}>
-            <Components.Button
-              className="pt-large pt-intent-primary"
-              iconName="edit"
-            >
-              Editer
-            </Components.Button>
-          </Link>
+        <div>
+          <Components.Button
+            href={`${baseRoute}/${document._id}${editRoute}`}
+            variant="contained"
+            color="secondary"
+          >
+            <PencilIcon />
+            {editText}
+          </Components.Button>
         </div>
       ) : null}
-      <div px={16} py={24}>
-        <h2>{headerText}</h2>
+      <div>
+        <h2>{headerText || `${getCollectionName(collection)}`}</h2>
         <Components.Card
           canEdit={false}
           collection={collection}
           document={document}
           currentUser={currentUser}
+          fields={fields}
         />
       </div>
     </div>

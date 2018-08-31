@@ -20,5 +20,4 @@ config
 # collection-admin
 layout
 menu
-erikdakoda:vulcan-material-ui
 users-admin

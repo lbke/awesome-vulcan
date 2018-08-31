@@ -1,7 +1,7 @@
 const capitalizeFirstLetter = string =>
   string.charAt(0).toUpperCase() + string.slice(1);
 
-const getCollectionName = collection => collection._name;
+export const getCollectionName = collection => collection._name;
 
 const makeComponentName = suffix => collection =>
   `${capitalizeFirstLetter(getCollectionName(collection))}${suffix}`;

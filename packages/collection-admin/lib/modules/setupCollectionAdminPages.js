@@ -20,7 +20,7 @@ import {
 /**
  * Create the item details page
  */
-const setupItemDetailsComponent = collection => {
+const setupItemDetailsComponent = (collection, options) => {
   const componentName = getDetailsComponentName(collection);
   const component = class DetailsComponent extends PureComponent {
     render() {
@@ -38,18 +38,20 @@ const setupItemDetailsComponent = collection => {
           )}
           loading={loading}
           document={document}
+          headerText={options.details.headerText}
+          fields={options.details.fields}
         />
       );
     }
   };
   component.displayName = componentName;
-  const options = {
+  const withDocumentOptions = {
     collection
   };
   registerComponent(
     componentName,
     component,
-    /*withDocumentId('userId'),*/ [withDocument, options]
+    /*withDocumentId('userId'),*/ [withDocument, withDocumentOptions]
   );
   return component; // return if the component is needed
 };
@@ -87,7 +89,7 @@ const setupListComponent = (collection, options) => {
     render() {
       const { results = [], loading } = this.props;
       return (
-        <Components.CollectionPage
+        <Components.CollectionList
           collection={collection}
           //loading={loading}
           results={results}
