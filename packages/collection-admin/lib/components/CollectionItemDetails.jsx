@@ -15,8 +15,9 @@ import {
   withCurrentUser
 } from "meteor/vulcan:core";
 import PencilIcon from "mdi-material-ui/Pencil";
+import Typography from "@material-ui/core/Typography";
 
-import { getCollectionName } from "../modules/namingHelpers";
+import { getCollectionDisplayName } from "../modules/namingHelpers";
 
 const CollectionItemDetails = ({
   loading,
@@ -48,7 +49,9 @@ const CollectionItemDetails = ({
         </div>
       ) : null}
       <div>
-        <h2>{headerText || `${getCollectionName(collection)}`}</h2>
+        <Typography variant="title">
+          {headerText || `${getCollectionDisplayName(collection)}`}
+        </Typography>
         <Components.Card
           canEdit={false}
           collection={collection}
