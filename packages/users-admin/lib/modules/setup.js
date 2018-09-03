@@ -16,6 +16,18 @@ setupCollectionAdminPages(Users, {
       "email",
       "groups"
     ]
+  },
+  form: {
+    newFields: ["username", "email", "groups", "isAdmin"],
+    editFields: [
+      "_id",
+      "createdAt",
+      "username",
+      "email",
+      "displayName",
+      "groups",
+      "isAdmin"
+    ]
   }
 });
 registerMenuItem("users", { label: "Users", path: "/users" });

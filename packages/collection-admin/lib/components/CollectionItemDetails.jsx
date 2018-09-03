@@ -16,9 +16,21 @@ import {
 } from "meteor/vulcan:core";
 import PencilIcon from "mdi-material-ui/Pencil";
 import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
+import { Link } from "react-router";
 
 import { getCollectionDisplayName } from "../modules/namingHelpers";
 
+import withStyles from "@material-ui/core/styles/withStyles";
+
+const styles = theme => ({
+  addButtonWrapper: {
+    textAlign: "right"
+  },
+  headerWrapper: {
+    padding: theme.spacing.unit * 4
+  }
+});
 const CollectionItemDetails = ({
   loading,
   document,
@@ -30,28 +42,35 @@ const CollectionItemDetails = ({
   editText = "Editer",
   headerText,
 
-  fields
+  fields,
+
+  classes
 }) => {
   return loading ? (
     <Loading />
   ) : (
-    <div direction="column" style={{ width: "100%" }}>
-      {collection.options.mutations.edit.check(currentUser, document) ? (
-        <div>
-          <Components.Button
-            href={`${baseRoute}/${document._id}${editRoute}`}
-            variant="contained"
-            color="secondary"
-          >
-            <PencilIcon />
-            {editText}
-          </Components.Button>
-        </div>
-      ) : null}
+    <div>
+      <Grid container className={classes.headerWrapper}>
+        <Grid item sm={6} xs={12}>
+          <Typography variant="title" color="inherit" className="tagline">
+            {headerText || getCollectionDisplayName(collection)}
+          </Typography>
+        </Grid>
+        {collection.options.mutations.edit.check(currentUser, document) && (
+          <Grid item sm={6} xs={12} className={classes.addButtonWrapper}>
+            <Components.Button
+              component={Link}
+              to={`${baseRoute}/${document._id}${editRoute}`}
+              variant="contained"
+              color="secondary"
+            >
+              <PencilIcon />
+              {editText}
+            </Components.Button>
+          </Grid>
+        )}
+      </Grid>
       <div>
-        <Typography variant="title">
-          {headerText || `${getCollectionDisplayName(collection)}`}
-        </Typography>
         <Components.Card
           canEdit={false}
           collection={collection}
@@ -67,5 +86,6 @@ const CollectionItemDetails = ({
 registerComponent(
   "CollectionItemDetails",
   CollectionItemDetails,
-  withCurrentUser
+  withCurrentUser,
+  [withStyles, styles]
 );

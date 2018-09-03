@@ -83,6 +83,7 @@
     "react-select": "^1.2.1",
     "react-stripe-checkout": "^2.4.0",
     "react-syntax-highlighter": "^6.1.2",
+    "react-toastify": "^4.3.0",
     "recompose": "^0.26.0",
     "redux": "^3.6.0",
     "rss": "^1.2.1",

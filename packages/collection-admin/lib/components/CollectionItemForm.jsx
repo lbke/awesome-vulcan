@@ -12,17 +12,23 @@ import {
   registerComponent,
   withCurrentUser
 } from "meteor/vulcan:core";
-import { browserHistory } from "react-router";
+import { toast } from "react-toastify";
+import { getCollectionDisplayName } from "../modules/namingHelpers";
+import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
+import ArrowLeftBoldIcon from "mdi-material-ui/ArrowLeftBold";
+import { Link, browserHistory } from "react-router";
 
-const Toaster = {
-  create: () => ({
-    show: console.log
-  })
-};
-const Intent = {
-  SUCCESS: "success",
-  ERROR: "error"
-};
+import withStyles from "@material-ui/core/styles/withStyles";
+
+const styles = theme => ({
+  addButtonWrapper: {
+    textAlign: "right"
+  },
+  headerWrapper: {
+    padding: theme.spacing.unit * 4
+  }
+});
 
 export const CollectionItemForm = ({
   collection,
@@ -34,11 +40,34 @@ export const CollectionItemForm = ({
   router,
   baseRoute,
   fields,
+  headerText,
+
+  classes,
   ...otherProps
 }) => (
   <div>
-    {documentId || collection.options.mutations.new.check(currentUser) ? ( // new doc
-      <div px={16} py={24}>
+    <Grid container className={classes.headerWrapper}>
+      <Grid item sm={6} xs={12}>
+        <Typography variant="title" color="inherit" className="tagline">
+          {headerText ||
+            `${documentId ? "Edit " : "New "}${getCollectionDisplayName(
+              collection
+            )}`}
+        </Typography>
+      </Grid>
+      <Grid item sm={6} xs={12} className={classes.addButtonWrapper}>
+        <Components.Button
+          onClick={() => browserHistory.goBack()}
+          variant="contained"
+          color="secondary"
+        >
+          <ArrowLeftBoldIcon />
+          Retour
+        </Components.Button>
+      </Grid>
+    </Grid>
+    {(documentId || collection.options.mutations.new.check(currentUser)) && (
+      <div>
         <Components.SmartForm
           collection={collection}
           mutationFragment={
@@ -50,28 +79,16 @@ export const CollectionItemForm = ({
           documentId={documentId}
           showRemove={!!documentId}
           errorCallback={(document, error) => {
-            Toaster.create().show({
-              message: `Une erreur s'est produite`,
-              iconName: "error",
-              intant: Intent.ERROR
-            });
+            toast.error("Une erreur s'est produite");
           }}
           removeSuccessCallback={document => {
-            Toaster.create().show({
-              message: "Document supprimé",
-              iconName: "tick",
-              intent: Intent.SUCCESS
-            });
+            toast.success("Document supprimé");
             if (closeModal) {
               closeModal();
             }
           }}
           successCallback={document => {
-            Toaster.create().show({
-              message: "Données mises à jour",
-              iconName: "tick",
-              intent: Intent.SUCCESS
-            });
+            toast.success("Données mises à jour");
             // close the modal on edit mode
             if (closeModal) {
               closeModal();
@@ -82,9 +99,12 @@ export const CollectionItemForm = ({
           {...otherProps}
         />
       </div>
-    ) : null}
+    )}
   </div>
 );
 
 export default CollectionItemForm;
-registerComponent("CollectionItemForm", CollectionItemForm, withCurrentUser);
+registerComponent("CollectionItemForm", CollectionItemForm, withCurrentUser, [
+  withStyles,
+  styles
+]);

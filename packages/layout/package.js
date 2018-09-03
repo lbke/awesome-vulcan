@@ -3,9 +3,17 @@ Package.describe({
 });
 
 Package.onUse(api => {
-  api.use(["vulcan:core", "erikdakoda:vulcan-material-ui", "menu"]);
+  api.use([
+    "vulcan:core",
+    "erikdakoda:vulcan-material-ui",
+    "fourseven:scss@4.5.0",
+    "menu"
+  ]);
 
-  api.addFiles(["lib/stylesheets/roboto.css"], "client");
+  api.addFiles(
+    ["lib/stylesheets/roboto.css"], //, "lib/stylesheets/ReactToastify.min.css"],
+    "client"
+  );
   api.mainModule("lib/server/main.js", "server");
   api.mainModule("lib/client/main.js", "client");
 });

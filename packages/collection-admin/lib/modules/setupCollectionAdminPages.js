@@ -59,21 +59,24 @@ const setupItemDetailsComponent = (collection, options) => {
 /**
  * Create the new/edit component
  */
-const setupFormComponent = collection => {
+const setupFormComponent = (collection, options) => {
   const componentName = getFormComponentName(collection);
   const component = class ItemComponent extends PureComponent {
     render() {
-      const { currentUser, documentId, params, ...otherProps } = this.props;
+      const { documentId, params, ...otherProps } = this.props;
+      const finalDocumentId = documentId || params.documentId;
       return (
         <Components.CollectionItemForm
           collection={collection}
           mutationFragment={getFragmentName(collection)}
           queryFragment={getFragmentName(collection)}
-          documentId={documentId || params.documentId}
           baseRoute={getBaseRoute(collection)}
+          documentId={finalDocumentId}
           {...otherProps}
           params={params}
-          //fields={["email", "username", "groups", "isAdmin"]}
+          fields={
+            finalDocumentId ? options.form.editFields : options.form.newFields
+          }
         />
       );
     }
@@ -96,6 +99,7 @@ const setupListComponent = (collection, options) => {
           baseRoute={getBaseRoute(collection)}
           check={Users.isAdmin}
           basicColumns={options.list.basicColumns}
+          headerText={options.details.headerText}
         />
       );
     }
