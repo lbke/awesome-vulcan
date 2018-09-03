@@ -10,7 +10,7 @@ setupCollectionAdminPages(Users, {
     fields: ["_id", "createdAt", "username", "email", "isAdmin", "groups"]
   },
   form: {
-    newFields: ["username", "email", "groups", "isAdmin"],
+    newFields: ["username", "email", "_password", "groups", "isAdmin"],
     editFields: ["_id", "createdAt", "username", "email", "groups", "isAdmin"]
   }
 });

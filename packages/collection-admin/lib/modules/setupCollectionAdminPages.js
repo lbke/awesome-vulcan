@@ -72,11 +72,11 @@ const setupFormComponent = (collection, options) => {
           queryFragment={getFragmentName(collection)}
           baseRoute={getBaseRoute(collection)}
           documentId={finalDocumentId}
-          {...otherProps}
           params={params}
           fields={
             finalDocumentId ? options.form.editFields : options.form.newFields
           }
+          {...otherProps}
         />
       );
     }
@@ -125,12 +125,13 @@ const defaultOptions = {
 const setupCollectionAdminPages = (collection, options) => {
   const mergedOptions = merge(defaultOptions, options);
   // register list page
-  setupListComponent(collection, mergedOptions);
+  const ListComponent = setupListComponent(collection, mergedOptions);
   // register detail page
-  setupItemDetailsComponent(collection, mergedOptions);
+  const DetailsComponent = setupItemDetailsComponent(collection, mergedOptions);
   // register new/edit form page
-  setupFormComponent(collection, mergedOptions);
+  const FormComponent = setupFormComponent(collection, mergedOptions);
   // setup the routes
   setupCollectionAdminRoutes(collection, mergedOptions);
+  return { ListComponent, DetailsComponent, FormComponent };
 };
 export default setupCollectionAdminPages;

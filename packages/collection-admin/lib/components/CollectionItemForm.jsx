@@ -42,6 +42,9 @@ export const CollectionItemForm = ({
   fields,
   headerText,
 
+  submitCallback,
+  successCallback,
+
   classes,
   ...otherProps
 }) => (
@@ -87,7 +90,11 @@ export const CollectionItemForm = ({
               closeModal();
             }
           }}
+          submitCallback={submitCallback || undefined}
           successCallback={document => {
+            if (successCallback) {
+              successCallback(document);
+            }
             toast.success("Données mises à jour");
             // close the modal on edit mode
             if (closeModal) {
