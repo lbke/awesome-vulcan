@@ -27,14 +27,20 @@ const adminUsers = [
   {
     username: "admin-dev",
     email: Meteor.settings.adminEmail,
-    password: Meteor.settings.adminPassword,
     isDummy: false,
     isAdmin: true
   }
 ];
+// needs to be stored separately otherwise the password is stored in clear
+const adminPasswords = [
+  {
+    email: Meteor.settings.adminEmail,
+    password: Meteor.settings.adminPassword
+  }
+];
 const createUsers = function() {
   Promise.all(adminUsers.map(createUser)).then(() =>
-    Promise.all(adminUsers.map(setPassword))
+    Promise.all(adminPasswords.map(setPassword))
   );
 };
 
