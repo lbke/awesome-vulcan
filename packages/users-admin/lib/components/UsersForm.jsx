@@ -31,7 +31,6 @@ Users.addField({
 
 // Meteor rely on the `emails` prop, so we need to define it
 const setUserEmails = function(user) {
-  console.log("SETING USER EMAIL", user);
   // set emails prop if necessary
   if (user.email) {
     user.emails = [{ address: user.email }];
