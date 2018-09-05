@@ -32,7 +32,6 @@ Accounts.config({
 
 Accounts.ui.config({
   onSignedInHook: () => {
-    console.log("signed in");
     //const userId = Meteor.userId();
     //if (Meteor.isClient) {
     //  // TODO: encapsulate this into a "getUser" reusable method

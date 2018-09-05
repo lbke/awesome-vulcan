@@ -4,7 +4,8 @@ import {
   Components,
   withDocument,
   withCurrentUser,
-  withList
+  withList,
+  withAccess
 } from "meteor/vulcan:core";
 import Users from "meteor/vulcan:users";
 import merge from "lodash/merge";
@@ -48,10 +49,15 @@ const setupItemDetailsComponent = (collection, options) => {
   const withDocumentOptions = {
     collection
   };
+  const withAccessOptions = {
+    groups: options.details.accessGroups,
+    redirect: options.details.accessRedirect
+  };
   registerComponent(
     componentName,
     component,
-    /*withDocumentId('userId'),*/ [withDocument, withDocumentOptions]
+    /*withDocumentId('userId'),*/ [withDocument, withDocumentOptions],
+    [withAccess, withAccessOptions]
   );
   return component; // return if the component is needed
 };
@@ -82,8 +88,14 @@ const setupFormComponent = (collection, options) => {
     }
   };
   component.displayName = componentName;
-
-  registerComponent(componentName, component, withCurrentUser);
+  const withAccessOptions = {
+    groups: options.form.accessGroups,
+    redirect: options.form.accessRedirect
+  };
+  registerComponent(componentName, component, withCurrentUser, [
+    withAccess,
+    withAccessOptions
+  ]);
   return component;
 };
 
@@ -110,17 +122,26 @@ const setupListComponent = (collection, options) => {
     fragmentName: getFragmentName(collection),
     limit: 6
   };
+  const withAccessOptions = {
+    groups: options.list.accessGroups,
+    redirect: options.list.accessRedirect
+  };
 
   const componentName = getListComponentName(collection);
   component.displayName = componentName;
-  registerComponent(componentName, component, [withList, withListOptions]);
+  registerComponent(
+    componentName,
+    component,
+    [withList, withListOptions],
+    [withAccess, withAccessOptions]
+  );
   return component;
 };
 
 const defaultOptions = {
-  list: {},
-  details: {},
-  form: {}
+  list: { accessGroups: ["admins"], accessRedirect: "/" },
+  details: { accessGroups: ["admins"], accessRedirect: "/" },
+  form: { accessGroups: ["admins"], accessRedirect: "/" }
 };
 const setupCollectionAdminPages = (collection, options) => {
   const mergedOptions = merge(defaultOptions, options);

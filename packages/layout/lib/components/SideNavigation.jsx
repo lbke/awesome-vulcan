@@ -22,6 +22,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Users from "meteor/vulcan:users";
 
 import { getMenuItems } from "meteor/menu";
+import _partition from "lodash/partition";
 
 const styles = theme => ({
   root: {},
@@ -32,7 +33,7 @@ const styles = theme => ({
 
 class SideNavigation extends React.Component {
   state = {
-    isOpen: { admin: false }
+    isOpen: { admin: true }
   };
 
   toggle = item => {
@@ -46,7 +47,17 @@ class SideNavigation extends React.Component {
     const classes = this.props.classes;
     const isOpen = this.state.isOpen;
 
+    // ignores items the user can't see
     const menuItems = getMenuItems();
+    const authorizedMenuItems = menuItems.filter(({ groups }) => {
+      // items without groups are visible by guests too
+      if (!groups) return true;
+      if (Users.isMemberOf(currentUser, groups)) return true;
+      return false;
+    });
+    const splitItems = _partition(authorizedMenuItems, ["parent", "admin"]);
+    const adminMenuItems = splitItems[0];
+    const basicMenuItems = splitItems[1];
 
     return (
       <div className={classes.root}>
@@ -63,8 +74,7 @@ class SideNavigation extends React.Component {
             <ListItemText inset primary="Home" />
           </ListItem>
         </List>
-
-        {menuItems.length > 0 && (
+        {basicMenuItems.length > 0 && (
           <List>
             {menuItems.map(({ label, path }) => (
               <ListItem
@@ -78,7 +88,7 @@ class SideNavigation extends React.Component {
           </List>
         )}
 
-        {Users.isAdmin(currentUser) && (
+        {adminMenuItems.length > 0 && (
           <div>
             <Divider />
             <List>
@@ -94,30 +104,15 @@ class SideNavigation extends React.Component {
                 transitionduration="auto"
                 unmountOnExit
               >
-                <ListItem
-                  button
-                  className={classes.nested}
-                  onClick={() => {
-                    browserHistory.push("/admin");
-                  }}
-                >
-                  <ListItemIcon>
-                    <UsersIcon />
-                  </ListItemIcon>
-                  <ListItemText inset primary="Users" />
-                </ListItem>
-                <ListItem
-                  button
-                  className={classes.nested}
-                  onClick={() => {
-                    browserHistory.push("/theme");
-                  }}
-                >
-                  <ListItemIcon>
-                    <ThemeIcon />
-                  </ListItemIcon>
-                  <ListItemText inset primary="Theme" />
-                </ListItem>
+                {adminMenuItems.map(({ label, path }) => (
+                  <ListItem
+                    key={label}
+                    button
+                    onClick={() => browserHistory.push(path)}
+                  >
+                    <ListItemText primary={label} />
+                  </ListItem>
+                ))}
               </Collapse>
             </List>
           </div>
