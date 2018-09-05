@@ -1,2 +1,2 @@
-import '../modules';
-import './seed';
+export * from "../modules";
+import "./seed";

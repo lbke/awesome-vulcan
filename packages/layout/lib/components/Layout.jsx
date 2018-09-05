@@ -121,6 +121,7 @@ class Layout extends React.Component {
           </main>
 
           <Components.FlashMessages />
+          <Components.ToastContainer />
         </div>
       </div>
     );

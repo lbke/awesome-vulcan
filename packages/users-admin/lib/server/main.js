@@ -1,2 +1,3 @@
-import '../modules';
-import './seed';
+import "../modules";
+import "./seed";
+import "./methods";

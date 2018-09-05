@@ -77,6 +77,7 @@ const Header = (props, context) => {
             {siteTitle}
           </Typography>
         </div>
+        <Components.UserIndicator />
       </Toolbar>
     </AppBar>
   );

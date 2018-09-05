@@ -1,3 +1,5 @@
-import "../components/SideNavigation.jsx";
-import "../components/Layout.jsx";
-import "../components/Header.jsx";
+import "../components/ToasterSetup";
+import "../components/SideNavigation";
+import "../components/Layout";
+import "../components/Header";
+import "../components/UserIndicator";

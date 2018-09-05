@@ -1,7 +1,20 @@
 import React from "react";
-import { registerComponent } from "meteor/vulcan:core";
+import {
+  withCurrentUser,
+  Components,
+  registerComponent
+} from "meteor/vulcan:core";
 
-const Home = () => <div>Find me at packages/core/lib/components/Home.jsx</div>;
-registerComponent("Home", Home);
+const Home = ({ currentUser }) => (
+  <div>
+    <h1>Welcome</h1>
+    {!currentUser && <Components.AccountsLoginForm />}
+  </div>
+);
+registerComponent({
+  name: "Home",
+  component: Home,
+  hocs: [withCurrentUser]
+});
 
 export default Home;

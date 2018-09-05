@@ -16,8 +16,9 @@ accounts-password@1.5.1
 ############ Your Packages ############
 
 core
+config
 # collection-admin
+ui
 layout
 menu
-# users-admin
-erikdakoda:vulcan-material-ui
+users-admin
