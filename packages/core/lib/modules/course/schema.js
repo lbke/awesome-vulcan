@@ -1,33 +1,31 @@
+import { name, link, userId } from "../commonSchemas";
 const schema = {
   // default properties
 
   _id: {
     type: String,
     optional: true,
-    canRead: ['guests'],
+    canRead: ["guests"]
   },
   createdAt: {
     type: Date,
     optional: true,
-    canRead: ['guests'],
-    onCreate: ({ newDocument, currentUser}) => {
+    canRead: ["guests"],
+    onCreate: ({ newDocument, currentUser }) => {
       return new Date();
     }
   },
-  // userId: {
-  //   type: String,
-  //   optional: true,
-  //   canRead: ['guests'],
-  //   resolveAs: {
-  //     fieldName: 'user',
-  //     type: 'User',
-  //     resolver: (movie, args, context) => {
-  //       return context.Users.findOne({ _id: movie.userId }, { fields: context.Users.getViewableFields(context.currentUser, context.Users) });
-  //     },
-  //     addOriginalField: true
-  //   }
-  // },
-  
+  name,
+  link,
+  userId,
+  price: {
+    type: Number,
+    optional: false,
+    canRead: ["guests"],
+    canUpdate: ["admins"],
+    canCreate: ["admins"],
+    min: 0
+  }
 };
 
 export default schema;

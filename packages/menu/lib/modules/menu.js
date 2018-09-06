@@ -2,7 +2,7 @@ import values from "lodash/values";
 const menuItems = {};
 
 export const registerMenuItem = (itemId, config) => {
-  menuItems[itemId] = config;
+  menuItems[itemId] = { id: itemId, ...config };
 };
 export const removeMenuItem = itemId => {
   delete menuItems[itemId];

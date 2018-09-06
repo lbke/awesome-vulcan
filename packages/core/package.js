@@ -8,6 +8,7 @@ Package.onUse(api => {
     "vulcan:accounts",
     "config",
     "layout",
+    "collection-admin",
     "vulcan:i18n-fr-fr"
   ]);
 

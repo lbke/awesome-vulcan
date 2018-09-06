@@ -144,7 +144,7 @@ const defaultOptions = {
   form: { accessGroups: ["admins"], accessRedirect: "/" }
 };
 const setupCollectionAdminPages = (collection, options) => {
-  const mergedOptions = merge(defaultOptions, options);
+  const mergedOptions = merge({}, defaultOptions, options);
   // register list page
   const ListComponent = setupListComponent(collection, mergedOptions);
   // register detail page
