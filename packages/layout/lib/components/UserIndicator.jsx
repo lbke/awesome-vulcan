@@ -5,12 +5,13 @@ import {
   withCurrentUser
 } from "meteor/vulcan:core";
 import Button from "@material-ui/core/Button";
-import Icon from "@material-ui/core/Icon";
 import { Accounts } from "meteor/vulcan:accounts";
+import { FormattedMessage } from "meteor/vulcan:i18n";
+
 const UserIndicator = ({ currentUser, router }) =>
   !currentUser ? (
     <Button color="inherit" href="/">
-      Connexion
+      <FormattedMessage id={"layout.user.signin"} />
     </Button>
   ) : (
     <Button
@@ -20,7 +21,7 @@ const UserIndicator = ({ currentUser, router }) =>
         Accounts.logout(Accounts.ui._options.onSignedOutHook);
       }}
     >
-      Déconnexion
+      <FormattedMessage id={"layout.user.signout"} />
     </Button>
   );
 registerComponent("UserIndicator", UserIndicator, withCurrentUser);
