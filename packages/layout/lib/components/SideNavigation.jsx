@@ -23,6 +23,7 @@ import Users from "meteor/vulcan:users";
 
 import { getMenuItems } from "meteor/menu";
 import _partition from "lodash/partition";
+import { intlShape } from "meteor/vulcan:i18n";
 
 const styles = theme => ({
   root: {},
@@ -43,6 +44,7 @@ class SideNavigation extends React.Component {
   };
 
   render() {
+    const { intl } = this.context;
     const currentUser = this.props.currentUser;
     const classes = this.props.classes;
     const isOpen = this.state.isOpen;
@@ -71,18 +73,23 @@ class SideNavigation extends React.Component {
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>
-            <ListItemText inset primary="Home" />
+            <ListItemText
+              inset
+              primary={intl.formatMessage({ id: "layout.menu.home" })}
+            />
           </ListItem>
         </List>
         {basicMenuItems.length > 0 && (
           <List>
-            {menuItems.map(({ label, path }) => (
+            {menuItems.map(({ id, label, path, labelToken }) => (
               <ListItem
-                key={label}
+                key={id}
                 button
                 onClick={() => browserHistory.push(path)}
               >
-                <ListItemText primary={label} />
+                <ListItemText
+                  primary={label || intl.formatMessage({ id: labelToken })}
+                />
               </ListItem>
             ))}
           </List>
@@ -96,7 +103,9 @@ class SideNavigation extends React.Component {
                 <ListItemIcon>
                   <LockIcon />
                 </ListItemIcon>
-                <ListItemText primary="Admin" />
+                <ListItemText
+                  primary={intl.formatMessage({ id: "layout.menu.admin" })}
+                />
                 {isOpen.admin ? <ExpandLessIcon /> : <ExpandMoreIcon />}
               </ListItem>
               <Collapse
@@ -104,13 +113,15 @@ class SideNavigation extends React.Component {
                 transitionduration="auto"
                 unmountOnExit
               >
-                {adminMenuItems.map(({ label, path }) => (
+                {adminMenuItems.map(({ label, path, labelToken, id }) => (
                   <ListItem
-                    key={label}
+                    key={id}
                     button
                     onClick={() => browserHistory.push(path)}
                   >
-                    <ListItemText primary={label} />
+                    <ListItemText
+                      primary={label || intl.formatMessage({ id: labelToken })}
+                    />
                   </ListItem>
                 ))}
               </Collapse>
@@ -122,6 +133,9 @@ class SideNavigation extends React.Component {
   }
 }
 
+SideNavigation.contextTypes = {
+  intl: intlShape
+};
 SideNavigation.propTypes = {
   classes: PropTypes.object.isRequired,
   currentUser: PropTypes.object

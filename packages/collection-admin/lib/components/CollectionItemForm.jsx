@@ -18,6 +18,7 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import ArrowLeftBoldIcon from "mdi-material-ui/ArrowLeftBold";
 import { Link, browserHistory } from "react-router";
+import { FormattedMessage, intlShape } from "meteor/vulcan:i18n";
 
 import withStyles from "@material-ui/core/styles/withStyles";
 
@@ -30,32 +31,39 @@ const styles = theme => ({
   }
 });
 
-export const CollectionItemForm = ({
-  collection,
-  currentUser,
-  documentId,
-  mutationFragment,
-  queryFragment,
-  closeModal,
-  router,
-  baseRoute,
-  fields,
-  headerText,
+export const CollectionItemForm = (
+  {
+    collection,
+    currentUser,
+    documentId,
+    mutationFragment,
+    queryFragment,
+    closeModal,
+    router,
+    baseRoute,
+    fields,
+    headerText,
 
-  submitCallback,
-  successCallback,
+    submitCallback,
+    successCallback,
 
-  classes,
-  ...otherProps
-}) => (
+    classes,
+    ...otherProps
+  },
+  { intl }
+) => (
   <div>
     <Grid container className={classes.headerWrapper}>
       <Grid item sm={6} xs={12}>
         <Typography variant="title" color="inherit" className="tagline">
-          {headerText ||
-            `${documentId ? "Edit " : "New "}${getCollectionDisplayName(
-              collection
-            )}`}
+          {headerText || (
+            <span>
+              <FormattedMessage
+                id={`collectionAdmin.default.${documentId ? "edit" : "new"}`}
+              />
+              {` ${collection.typeName}`}
+            </span>
+          )}
         </Typography>
       </Grid>
       <Grid item sm={6} xs={12} className={classes.addButtonWrapper}>
@@ -65,7 +73,7 @@ export const CollectionItemForm = ({
           color="secondary"
         >
           <ArrowLeftBoldIcon />
-          Retour
+          <FormattedMessage id="collectionAdmin.default.go_back" />
         </Components.Button>
       </Grid>
     </Grid>
@@ -82,10 +90,18 @@ export const CollectionItemForm = ({
           documentId={documentId}
           showRemove={!!documentId}
           errorCallback={(document, error) => {
-            toast.error("Une erreur s'est produite");
+            toast.error(
+              intl.formatMessage({
+                id: "collectionAdmin.collectionItemForm.error"
+              })
+            );
           }}
           removeSuccessCallback={document => {
-            toast.success("Document supprimé");
+            toast.success(
+              intl.formatMessage({
+                id: "collectionAdmin.collectionItemForm.deleted"
+              })
+            );
             if (closeModal) {
               closeModal();
             }
@@ -95,7 +111,9 @@ export const CollectionItemForm = ({
             if (successCallback) {
               successCallback(document);
             }
-            toast.success("Données mises à jour");
+            toast.success(
+              intl.formatMessage({ id: "collectionItemForm.updated" })
+            );
             // close the modal on edit mode
             if (closeModal) {
               closeModal();
@@ -110,6 +128,9 @@ export const CollectionItemForm = ({
   </div>
 );
 
+CollectionItemForm.contextTypes = {
+  intl: intlShape
+};
 export default CollectionItemForm;
 registerComponent("CollectionItemForm", CollectionItemForm, withCurrentUser, [
   withStyles,
