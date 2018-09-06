@@ -14,6 +14,7 @@ import {
   Loading,
   withCurrentUser
 } from "meteor/vulcan:core";
+import { FormattedMessage, intlShape } from "meteor/vulcan:i18n";
 import PencilIcon from "mdi-material-ui/Pencil";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
@@ -39,8 +40,10 @@ const CollectionItemDetails = ({
   editRoute = "/edit",
   collection,
 
-  editText = "Editer",
+  editText,
+  editTextToken,
   headerText,
+  headerTextToken,
 
   fields,
 
@@ -53,7 +56,9 @@ const CollectionItemDetails = ({
       <Grid container className={classes.headerWrapper}>
         <Grid item sm={6} xs={12}>
           <Typography variant="title" color="inherit" className="tagline">
-            {headerText || getCollectionDisplayName(collection)}
+            {headerText ||
+              (headerTextToken && <FormattedMessage id={headerTextToken} />) ||
+              getCollectionDisplayName(collection)}
           </Typography>
         </Grid>
         {collection.options.mutations.edit.check(currentUser, document) && (
@@ -65,7 +70,11 @@ const CollectionItemDetails = ({
               color="secondary"
             >
               <PencilIcon />
-              {editText}
+              {editText || (
+                <FormattedMessage
+                  id={editTextToken || "collectionAdmin.default.edit"}
+                />
+              )}
             </Components.Button>
           </Grid>
         )}
