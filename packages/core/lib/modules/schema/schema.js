@@ -4,26 +4,20 @@ const schema = {
   _id: {
     type: String,
     optional: true,
-    viewableBy: ["guests"]
+    canRead: ['guests'],
   },
   createdAt: {
     type: Date,
     optional: true,
-    viewableBy: ["guests"],
-    onInsert: (document, currentUser) => {
+    canRead: ['guests'],
+    onCreate: ({ newDocument, currentUser}) => {
       return new Date();
     }
   },
-  foobar: {
-    type: String,
-    viewableBy: ["members"],
-    editableBy: ["members"],
-    insertableBy: ["members"]
-  }
   // userId: {
   //   type: String,
   //   optional: true,
-  //   viewableBy: ['guests'],
+  //   canRead: ['guests'],
   //   resolveAs: {
   //     fieldName: 'user',
   //     type: 'User',
@@ -33,6 +27,7 @@ const schema = {
   //     addOriginalField: true
   //   }
   // },
+  
 };
 
 export default schema;

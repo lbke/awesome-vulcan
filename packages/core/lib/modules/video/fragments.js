@@ -1,7 +1,7 @@
 import { registerFragment } from 'meteor/vulcan:core';
 
 registerFragment(`
-   fragment PressesFragment on Press {
+   fragment VideosFragment on Video {
      _id
      createdAt
    }

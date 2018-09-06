@@ -1,7 +1,7 @@
 import { registerFragment } from 'meteor/vulcan:core';
 
 registerFragment(`
-   fragment LearningsFragment on Learning {
+   fragment CoursesFragment on Course {
      _id
      createdAt
    }

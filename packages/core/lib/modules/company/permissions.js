@@ -1,12 +1,12 @@
 import Users from 'meteor/vulcan:users';
 
 Users.groups.members.can([
-  'Companies.new',
-  'Companies.edit.own',
-  'Companies.remove.own',
+  'Companies.create',
+  'Companies.update.own',
+  'Companies.delete.own',
 ]);
 
 Users.groups.admins.can([
-  'Companies.edit.all',
-  'Companies.remove.all,'
+  'Companies.update.all',
+  'Companies.delete.all,'
 ]);
