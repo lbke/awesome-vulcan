@@ -1,12 +1,9 @@
-import Users from 'meteor/vulcan:users';
+import Users from "meteor/vulcan:users";
 
 Users.groups.members.can([
-  'Articles.create',
-  'Articles.update.own',
-  'Articles.delete.own',
+  "article.create",
+  "article.update.own",
+  "article.delete.own"
 ]);
 
-Users.groups.admins.can([
-  'Articles.update.all',
-  'Articles.delete.all,'
-]);
+Users.groups.admins.can(["article.update.all", "article.delete.all,"]);

@@ -22,8 +22,8 @@ const schema = {
     type: Number,
     optional: false,
     canRead: ["guests"],
-    canUpdate: ["admins"],
-    canCreate: ["admins"],
+    canCreate: ["members"],
+    canUpdate: ["members"],
     min: 0
   }
 };

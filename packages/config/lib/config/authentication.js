@@ -23,7 +23,7 @@ if (Meteor.isClient && !browserHistory) {
 Accounts.config({
   // user can not create their own account, only admins and managers
   // can add users
-  forbidClientAccountCreation: true,
+  //forbidClientAccountCreation: true,
   // login never expires
   loginExpirationInDays: null,
   // passwords reset quickly expires to avoid security flaws

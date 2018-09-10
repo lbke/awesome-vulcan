@@ -21,7 +21,9 @@ const schema = {
   definition: {
     type: String,
     optional: false,
-    canRead: ["guests"]
+    canRead: ["guests"],
+    canUpdate: ["members"],
+    canCreate: ["members"]
   }
 };
 

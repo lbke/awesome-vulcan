@@ -20,6 +20,8 @@ const schema = {
     type: String,
     optional: true,
     canRead: ["guests"],
+    canCreate: ["members"],
+    canUpdate: ["members"],
     max: 200
   },
   ...links,

@@ -9,6 +9,7 @@ Package.onUse(api => {
     "config",
     "layout",
     "collection-admin",
+    "validation-workflow",
     "vulcan:i18n-fr-fr",
     "vulcan:material-ui-form-inputs"
   ]);

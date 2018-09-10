@@ -112,7 +112,9 @@ export const CollectionItemForm = (
               successCallback(document);
             }
             toast.success(
-              intl.formatMessage({ id: "collectionItemForm.updated" })
+              intl.formatMessage({
+                id: "collectionAdmin.collectionItemForm.updated"
+              })
             );
             // close the modal on edit mode
             if (closeModal) {

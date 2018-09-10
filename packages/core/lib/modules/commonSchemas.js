@@ -2,15 +2,15 @@ export const name = {
   type: String,
   optional: false,
   canRead: ["guests"],
-  canUpdate: ["admins"],
-  canCreate: ["admins"]
+  canUpdate: ["admins", "members"],
+  canCreate: ["admins", "members"]
 };
 export const title = {
   type: String,
   optional: false,
   canRead: ["guests"],
-  canUpdate: ["admins"],
-  canCreate: ["admins"]
+  canUpdate: ["admins", "members"],
+  canCreate: ["admins", "members"]
 };
 
 export const links = {
@@ -18,19 +18,13 @@ export const links = {
     type: Array,
     optional: false,
     canRead: ["guests"],
-    canUpdate: ["admins"],
-    canCreate: ["admins"],
+    canUpdate: ["admins", "members"],
+    canCreate: ["admins", "members"],
     min: 1,
     input: "ArrayOf"
   },
   "links.$": {
     type: String,
-    //type: new SimpleSchema({
-    //  test: {
-    //    type: String,
-    //    canCreate: ["admins"]
-    //  }
-    //}),
     input: "url"
   }
 };
@@ -40,7 +34,7 @@ export const link = {
   optional: true,
   canRead: ["guests"],
   canUpdate: ["admins"],
-  canCreate: ["admins"],
+  canCreate: ["admins", "members"],
   input: "url"
 };
 
