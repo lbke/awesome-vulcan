@@ -20,11 +20,28 @@ export const links = {
     canRead: ["guests"],
     canUpdate: ["admins"],
     canCreate: ["admins"],
-    min: 1
+    min: 1,
+    input: "ArrayOf"
   },
   "links.$": {
-    type: String
+    type: String,
+    //type: new SimpleSchema({
+    //  test: {
+    //    type: String,
+    //    canCreate: ["admins"]
+    //  }
+    //}),
+    input: "url"
   }
+};
+
+export const link = {
+  type: String,
+  optional: true,
+  canRead: ["guests"],
+  canUpdate: ["admins"],
+  canCreate: ["admins"],
+  input: "url"
 };
 
 export const userId = {
@@ -47,12 +64,4 @@ export const userId = {
     },
     addOriginalField: true
   }
-};
-
-export const link = {
-  type: String,
-  optional: true,
-  canRead: ["guests"],
-  canUpdate: ["admins"],
-  canCreate: ["admins"]
 };

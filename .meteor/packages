@@ -23,3 +23,4 @@ layout
 menu
 users-admin
 vulcan:i18n-fr-fr
+vulcan:material-ui-form-inputs
