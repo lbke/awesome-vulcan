@@ -1,4 +1,4 @@
-import { name, link, userId } from "../commonSchemas";
+import { title, link, userId } from "../commonSchemas";
 const schema = {
   // default properties
 
@@ -15,7 +15,7 @@ const schema = {
       return new Date();
     }
   },
-  name,
+  title,
   link,
   userId
 };

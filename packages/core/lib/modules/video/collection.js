@@ -7,18 +7,18 @@ import schema from "./schema.js";
 import "./fragments.js";
 import "./permissions.js";
 
-const Presses = createCollection({
-  collectionName: "Presses",
-  typeName: "Press",
+const Videos = createCollection({
+  collectionName: "Videos",
+  typeName: "Video",
   schema,
-  resolvers: getDefaultResolvers("Presses")
-  // mutations: getDefaultMutations('Presses')
+  resolvers: getDefaultResolvers({ typeName: "Video" }),
+  mutations: getDefaultMutations({ typeName: "Video" })
 });
 
-Presses.addDefaultView(terms => {
+Videos.addDefaultView(terms => {
   return {
     options: { sort: { createdAt: -1 } }
   };
 });
 
-export default Presses;
+export default Videos;

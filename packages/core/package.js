@@ -8,7 +8,9 @@ Package.onUse(api => {
     "vulcan:accounts",
     "config",
     "layout",
-    "vulcan:i18n-fr-fr"
+    "collection-admin",
+    "vulcan:i18n-fr-fr",
+    "vulcan:material-ui-form-inputs"
   ]);
 
   api.mainModule("lib/server/main.js", "server");

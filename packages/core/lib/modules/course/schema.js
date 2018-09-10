@@ -17,7 +17,15 @@ const schema = {
   },
   name,
   link,
-  userId
+  userId,
+  price: {
+    type: Number,
+    optional: false,
+    canRead: ["guests"],
+    canUpdate: ["admins"],
+    canCreate: ["admins"],
+    min: 0
+  }
 };
 
 export default schema;

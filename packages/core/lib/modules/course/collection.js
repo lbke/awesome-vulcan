@@ -7,18 +7,18 @@ import schema from "./schema.js";
 import "./fragments.js";
 import "./permissions.js";
 
-const Packages = createCollection({
-  collectionName: "Packages",
-  typeName: "Package",
+const Courses = createCollection({
+  collectionName: "Courses",
+  typeName: "Course",
   schema,
-  resolvers: getDefaultResolvers({ typeName: "Package" }),
-  mutations: getDefaultMutations({ typeName: "Package" })
+  resolvers: getDefaultResolvers({ typeName: "Course" }),
+  mutations: getDefaultMutations({ typeName: "Course" })
 });
 
-Packages.addDefaultView(terms => {
+Courses.addDefaultView(terms => {
   return {
     options: { sort: { createdAt: -1 } }
   };
 });
 
-export default Packages;
+export default Courses;

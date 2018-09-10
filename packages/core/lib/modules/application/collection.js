@@ -11,8 +11,8 @@ const Applications = createCollection({
   collectionName: "Applications",
   typeName: "Application",
   schema,
-  resolvers: getDefaultResolvers("Applications")
-  //mutations: getDefaultMutations('Applications')
+  resolvers: getDefaultResolvers({ typeName: "Application" }),
+  mutations: getDefaultMutations({ typeName: "Application" })
 });
 
 Applications.addDefaultView(terms => {
