@@ -15,8 +15,6 @@ import Collapse from "@material-ui/core/Collapse";
 import ExpandLessIcon from "mdi-material-ui/ChevronUp";
 import ExpandMoreIcon from "mdi-material-ui/ChevronDown";
 import LockIcon from "mdi-material-ui/Lock";
-import UsersIcon from "mdi-material-ui/AccountMultiple";
-import ThemeIcon from "mdi-material-ui/Palette";
 import HomeIcon from "mdi-material-ui/Home";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Users from "meteor/vulcan:users";
@@ -81,7 +79,7 @@ class SideNavigation extends React.Component {
         </List>
         {basicMenuItems.length > 0 && (
           <List>
-            {menuItems.map(({ id, label, path, labelToken }) => (
+            {basicMenuItems.map(({ id, label, path, labelToken }) => (
               <ListItem
                 key={id}
                 button

@@ -10,3 +10,5 @@ import "./package/collection.js";
 import "./course/collection.js";
 
 import "./setupAdminPages";
+
+import "./i18n.js";

@@ -6,6 +6,7 @@ Package.onUse(api => {
   api.use([
     "vulcan:core",
     "vulcan:accounts",
+    "vulcan:i18n",
     "config",
     "layout",
     "vulcan:backoffice-builder",
