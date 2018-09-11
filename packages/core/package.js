@@ -8,8 +8,8 @@ Package.onUse(api => {
     "vulcan:accounts",
     "config",
     "layout",
-    "collection-admin",
-    "validation-workflow",
+    "vulcan:backoffice-builder",
+    "vulcan:validation-workflows",
     "vulcan:i18n-fr-fr",
     "vulcan:material-ui-form-inputs"
   ]);

@@ -21,7 +21,7 @@ import HomeIcon from "mdi-material-ui/Home";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Users from "meteor/vulcan:users";
 
-import { getMenuItems } from "meteor/menu";
+import { getMenuItems } from "meteor/vulcan:menu";
 import _partition from "lodash/partition";
 import { intlShape } from "meteor/vulcan:i18n";
 

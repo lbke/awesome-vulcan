@@ -1,6 +1,6 @@
-import { setupCollectionAdminPages } from "meteor/collection-admin";
-import { setupDocumentValidation } from "meteor/validation-workflow";
-import { registerMenuItem } from "meteor/menu";
+import { setupCollectionAdminPages } from "meteor/vulcan:backoffice-builder";
+import { setupDocumentValidation } from "meteor/vulcan:validation-workflows";
+import { registerMenuItem } from "meteor/vulcan:menu";
 import Application from "./application/collection";
 import Article from "./article/collection";
 import Company from "./company/collection";
@@ -47,37 +47,3 @@ collections.forEach(collection => {
 collections.forEach(collection => {
   setupDocumentValidation(collection);
 });
-
-/* setupCollectionAdminPages(Users, {
-  list: {
-    basicColumns: [
-      "_id",
-      "createdAt",
-      "username",
-      "email",
-      "isAdmin",
-      "groups"
-    ],
-    accessGroups: ["admins"],
-    accessRedirect: "/"
-  },
-  details: {
-    fields: ["_id", "createdAt", "username", "email", "isAdmin", "groups"],
-    accessGroups: ["admins"],
-    accessRedirect: "/"
-  },
-  form: {
-    newFields: ["username", "email", "_password", "groups", "isAdmin"],
-    editFields: [
-      "_id",
-      "createdAt",
-      "username",
-      "email",
-      "_password",
-      "groups",
-      "isAdmin"
-    ],
-    accessGroups: ["admins"],
-    accessRedirect: "/"
-  }
-}); */
