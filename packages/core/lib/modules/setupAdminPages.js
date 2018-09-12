@@ -12,7 +12,7 @@ import Video from "./video/collection";
 const collections = [
   Application,
   Article,
-  Company,
+  //Company,
   //Course,
   Package,
   //Schema,

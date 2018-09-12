@@ -45,6 +45,10 @@ const styles = theme => ({
   },
   menuButton: {
     marginRight: theme.spacing.unit * 3
+  },
+  logo: {
+    maxHeight: "64px",
+    marginRight: theme.spacing.unit * 2
   }
 });
 
@@ -73,6 +77,7 @@ const Header = (props, context) => {
         </IconButton>
 
         <div className={classNames(classes.headerMid)}>
+          <img src="/img/awesome-vulcan-logo_64.png" className={classes.logo} />
           <Typography variant="title" color="inherit" className="tagline">
             {siteTitle}
           </Typography>
