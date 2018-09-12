@@ -11,8 +11,8 @@ const Packages = createCollection({
   collectionName: "Packages",
   typeName: "Package",
   schema,
-  resolvers: getDefaultResolvers("Packages")
-  //mutations: getDefaultMutations('Packages')
+  resolvers: getDefaultResolvers({ typeName: "Package" }),
+  mutations: getDefaultMutations({ typeName: "Package" })
 });
 
 Packages.addDefaultView(terms => {
