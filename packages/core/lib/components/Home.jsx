@@ -23,14 +23,14 @@ class Home extends PureComponent {
     const { classes, currentUser } = this.props;
     return (
       <Grid container>
-        <Grid item md={6} sm={12} className={classes.imgWrapper}>
+        <Grid item lg={6} md={3} sm={12} className={classes.imgWrapper}>
           <img
             className={classes.img}
             src="/img/awesome-vulcan-logo_512.png"
             alt="Awesome Vulcan Logo"
           />
         </Grid>
-        <Grid item md={6} sm={12}>
+        <Grid item lg={6} md={9} sm={12}>
           {homeContent && <Components.Markdown source={homeContent} />}
           {!currentUser ? (
             <div>
