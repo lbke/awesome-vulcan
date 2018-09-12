@@ -1,6 +1,7 @@
 export const name = {
   type: String,
   optional: false,
+  label: "Name",
   canRead: ["guests"],
   canUpdate: ["admins", "members"],
   canCreate: ["admins", "members"]
@@ -8,15 +9,26 @@ export const name = {
 export const title = {
   type: String,
   optional: false,
+  label: "Title",
   canRead: ["guests"],
   canUpdate: ["admins", "members"],
   canCreate: ["admins", "members"]
+};
+export const description = {
+  type: String,
+  label: "Description",
+  optional: false,
+  canRead: ["guests"],
+  canUpdate: ["admins", "members"],
+  canCreate: ["admins", "members"],
+  max: 140
 };
 
 export const links = {
   links: {
     type: Array,
     optional: false,
+    label: "Links",
     canRead: ["guests"],
     canUpdate: ["admins", "members"],
     canCreate: ["admins", "members"],
@@ -31,7 +43,8 @@ export const links = {
 
 export const link = {
   type: String,
-  optional: true,
+  optional: false,
+  label: "Link",
   canRead: ["guests"],
   canUpdate: ["admins"],
   canCreate: ["admins", "members"],
@@ -41,7 +54,7 @@ export const link = {
 export const userId = {
   type: String,
   optional: true,
-  canRead: ["guests"],
+  canRead: ["admins"],
   resolveAs: {
     fieldName: "user",
     type: "User",
