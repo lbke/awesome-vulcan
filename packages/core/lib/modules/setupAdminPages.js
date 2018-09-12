@@ -13,9 +13,9 @@ const collections = [
   Application,
   Article,
   Company,
-  Course,
+  //Course,
   Package,
-  Schema,
+  //Schema,
   Video
 ];
 // create components and pages

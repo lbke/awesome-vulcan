@@ -16,4 +16,12 @@ You can propose real Vulcan related resources, like your own packages or article
 
 Now, all you have to do is sign up and test!
 
-*[Built with love by LBKE](https://github.com/lbke)*
+_[Built with love by LBKE](https://github.com/lbke)_
+
+## Roadmap
+
+- Allow to share schemas
+- Improve the DataTable field selection when displaying data
+- i18n of menu items and of form inputs
+- fix form error message
+- fix DataTable load more button
