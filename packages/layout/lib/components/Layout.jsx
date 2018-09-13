@@ -10,62 +10,65 @@ import classNames from "classnames";
 const drawerWidth = 240;
 const topBarHeight = 100;
 
-const styles = theme => ({
-  "@global": {
-    html: {
-      background: theme.palette.background.default,
-      WebkitFontSmoothing: "antialiased",
-      MozOsxFontSmoothing: "grayscale",
+const styles = theme => {
+  const contentPadding = theme.spacing.unit * 8
+  return {
+    "@global": {
+      html: {
+        background: theme.palette.background.default,
+        WebkitFontSmoothing: "antialiased",
+        MozOsxFontSmoothing: "grayscale",
+        overflow: "hidden"
+      },
+      body: {
+        margin: 0
+      }
+    },
+    root: {
+      width: "100%",
+      zIndex: 1,
       overflow: "hidden"
     },
-    body: {
-      margin: 0
+    appFrame: {
+      position: "relative",
+      display: "flex",
+      height: "100vh",
+      alignItems: "stretch"
+    },
+    drawerPaper: {
+      position: "relative",
+      width: drawerWidth,
+      backgroundColor: theme.palette.background[200]
+    },
+    drawerHeader: {
+      height: `${topBarHeight}px !important`,
+      minHeight: `${topBarHeight}px !important`,
+      position: "relative !important"
+    },
+    content: {
+      padding: contentPadding,
+      width: "100%",
+      marginLeft: -drawerWidth,
+      flexGrow: 1,
+      backgroundColor: theme.palette.background.default,
+      color: theme.palette.text.primary,
+      transition: theme.transitions.create("margin", {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen
+      }),
+      height: `calc(100% - ${topBarHeight}px - ${2 * contentPadding}px)`,
+      marginTop: topBarHeight,
+      overflowY: "scroll"
+    },
+    mainShift: {
+      marginLeft: 0,
+      transition: theme.transitions.create("margin", {
+        easing: theme.transitions.easing.easeOut,
+        duration: theme.transitions.duration.enteringScreen
+      })
     }
-  },
-  root: {
-    width: "100%",
-    zIndex: 1,
-    overflow: "hidden"
-  },
-  appFrame: {
-    position: "relative",
-    display: "flex",
-    height: "100vh",
-    alignItems: "stretch"
-  },
-  drawerPaper: {
-    position: "relative",
-    width: drawerWidth,
-    backgroundColor: theme.palette.background[200]
-  },
-  drawerHeader: {
-    height: `${topBarHeight}px !important`,
-    minHeight: `${topBarHeight}px !important`,
-    position: "relative !important"
-  },
-  content: {
-    padding: theme.spacing.unit * 8,
-    width: "100%",
-    marginLeft: -drawerWidth,
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
-    color: theme.palette.text.primary,
-    transition: theme.transitions.create("margin", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    }),
-    height: `calc(100% - ${topBarHeight}px)`,
-    marginTop: topBarHeight,
-    overflowY: "scroll"
-  },
-  mainShift: {
-    marginLeft: 0,
-    transition: theme.transitions.create("margin", {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen
-    })
   }
-});
+};
 
 class Layout extends React.Component {
   state = {
