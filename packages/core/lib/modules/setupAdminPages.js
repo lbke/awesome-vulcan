@@ -1,5 +1,5 @@
 import { setupCollectionAdminPages } from "meteor/vulcan:backoffice-builder";
-import { setupDocumentValidation } from "meteor/vulcan:validation-workflows";
+import { setupDocumentValidation, getValidationView } from "meteor/vulcan:validation-workflows";
 import { registerMenuItem } from "meteor/vulcan:menu";
 import Application from "./application/collection";
 import Article from "./article/collection";
@@ -20,8 +20,17 @@ const collections = [
 ];
 // create components and pages
 collections.forEach(collection => {
+  // get the terms depending on the user (guests/members can't see invalid documents)
+  const getOptions = (currentUser) => {
+    const view = getValidationView(currentUser)
+    return view ? {
+      terms: {
+        view
+      }
+    } : undefined
+  }
   setupCollectionAdminPages(collection, {
-    list: { accessGroups: ["members", "guests", "admins"] },
+    list: { accessGroups: ["members", "guests", "admins"], getOptions },
     details: { accessGroups: ["members", "guests", "admins"] },
     form: {
       accessGroups: ["members", "guests", "admins"]
