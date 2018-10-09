@@ -7,7 +7,8 @@ Package.onUse(api => {
     "vulcan:core",
     "erikdakoda:vulcan-material-ui",
     "fourseven:scss@4.5.0",
-    "vulcan:menu"
+    "vulcan:menu",
+    "vulcan:backoffice-builder"
   ]);
 
   api.addFiles(

@@ -17,10 +17,9 @@ import ExpandMoreIcon from "mdi-material-ui/ChevronDown";
 import LockIcon from "mdi-material-ui/Lock";
 import HomeIcon from "mdi-material-ui/Home";
 import withStyles from "@material-ui/core/styles/withStyles";
-import Users from "meteor/vulcan:users";
 
-import { getMenuItems } from "meteor/vulcan:menu";
-import _partition from "lodash/partition";
+import { getAuthorizedMenuItems } from "meteor/vulcan:menu";
+import { getAuthorizedBackofficeMenuItems } from "meteor/vulcan:backoffice-builder";
 import { intlShape } from "meteor/vulcan:i18n";
 
 const styles = theme => ({
@@ -48,17 +47,8 @@ class SideNavigation extends React.Component {
     const isOpen = this.state.isOpen;
 
     // ignores items the user can't see
-    const menuItems = getMenuItems();
-    const authorizedMenuItems = menuItems.filter(({ groups }) => {
-      // items without groups are visible by guests too
-      if (!groups) return true;
-      if (Users.isMemberOf(currentUser, groups)) return true;
-      return false;
-    });
-    const splitItems = _partition(authorizedMenuItems, ["parent", "admin"]);
-    const adminMenuItems = splitItems[0];
-    const basicMenuItems = splitItems[1];
-
+    const basicMenuItems = getAuthorizedMenuItems();
+    const adminMenuItems = getAuthorizedBackofficeMenuItems(currentUser);
     return (
       <div className={classes.root}>
         <List>
