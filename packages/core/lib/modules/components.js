@@ -1,1 +1,2 @@
-import "../components/Home.jsx";
+import "../components/Home";
+import "../components/Applications";
