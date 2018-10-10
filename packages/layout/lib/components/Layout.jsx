@@ -11,7 +11,7 @@ const drawerWidth = 240;
 const topBarHeight = 100;
 
 const styles = theme => {
-  const contentPadding = theme.spacing.unit * 8
+  const contentPadding = theme.spacing.unit * 4
   return {
     "@global": {
       html: {
