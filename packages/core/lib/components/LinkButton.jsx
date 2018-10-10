@@ -22,6 +22,7 @@ const getIcon = linkType => {
   }
 };
 export const LinkButton = ({ href }) => {
+  if (!href) return null;
   const linkType = getLinkType(href);
   let selectedIcon = getIcon(linkType);
   return (

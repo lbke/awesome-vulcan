@@ -23,7 +23,8 @@ const ResultsGrid = ({
   results,
   classes,
   ItemComponent,
-  title
+  title,
+  cols = 2
 }) => {
   if (loading) return <Components.Loading />;
 
@@ -31,15 +32,15 @@ const ResultsGrid = ({
 
   return (
     <Grid container spacing={8}>
-      <Grid item>
+      <Grid item xs={12}>
         <Typography variant="display2" component="h1">
           {title}
         </Typography>
       </Grid>
-      <Grid item>
+      <Grid item xs={12}>
         <Grid container spacing={16}>
           {results.map(result => (
-            <Grid key={result._id} item xs={12} md={6}>
+            <Grid key={result._id} item xs={12} md={12 / cols}>
               <ItemComponent item={result} />
             </Grid>
           ))}
