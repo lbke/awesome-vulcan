@@ -7,6 +7,8 @@
   "scripts": {
     "prestart": "node .vulcan/prestart_vulcan.js",
     "start": "meteor --settings settings.json",
+    "start-prod": "meteor --settings production.settings.json --production",
+    "deploy": "cd .deploy && METEOR_PACKAGE_DIRS=$METEOR_PACKAGE_DIRS mup deploy",
     "lint": "eslint --cache --ext .jsx,js packages"
   },
   "dependencies": {
