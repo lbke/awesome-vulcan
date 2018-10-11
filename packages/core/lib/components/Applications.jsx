@@ -65,7 +65,7 @@ const ApplicationItem = ({
 const StyledApplicationItem = withStyles(styles)(ApplicationItem);
 const Applications = ({ classes, ...otherProps }) => (
   <Components.ResultsGrid
-    title="Built with Vulcan.js"
+    titleToken="core.application.title"
     ItemComponent={StyledApplicationItem}
     {...otherProps}
   />

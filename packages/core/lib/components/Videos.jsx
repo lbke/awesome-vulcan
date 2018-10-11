@@ -63,7 +63,7 @@ const VideoItem = ({ item: { title, link, createdAt }, classes }) => (
 const StyledVideoItem = withStyles(styles)(VideoItem);
 const Videos = ({ classes, ...otherProps }) => (
   <Components.ResultsGrid
-    title="Videos about Vulcan.js"
+    titleToken="core.video.title"
     ItemComponent={StyledVideoItem}
     {...otherProps}
     cols={1}

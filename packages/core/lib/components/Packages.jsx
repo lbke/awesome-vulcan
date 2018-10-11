@@ -65,7 +65,7 @@ const PackageItem = ({
 const StyledPackageItem = withStyles(styles)(PackageItem);
 const Packages = ({ classes, ...otherProps }) => (
   <Components.ResultsGrid
-    title="Vulcan.js open source packages"
+    titleToken="core.package.title"
     ItemComponent={StyledPackageItem}
     {...otherProps}
   />

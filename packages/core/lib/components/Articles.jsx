@@ -63,7 +63,7 @@ const ArticleItem = ({ item: { title, link, createdAt }, classes }) => (
 const StyledArticleItem = withStyles(styles)(ArticleItem);
 const Articles = ({ classes, ...otherProps }) => (
   <Components.ResultsGrid
-    title="They talked about it"
+    titleToken="core.article.title"
     ItemComponent={StyledArticleItem}
     {...otherProps}
     cols={1}
