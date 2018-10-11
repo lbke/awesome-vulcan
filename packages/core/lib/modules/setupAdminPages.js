@@ -32,21 +32,26 @@ const getOptions = currentUser => {
     : undefined;
 };
 
-setupBackoffice(collections, {
-  basePath: undefined,
-  // for all collections
-  list: { accessGroups: ["members", "guests", "admins"], getOptions },
-  details: { accessGroups: ["members", "guests", "admins"] },
-  form: {
-    accessGroups: ["members", "guests", "admins"]
+setupBackoffice(
+  collections,
+  {
+    basePath: undefined,
+    // for all collections
+    list: { accessGroups: ["members", "guests", "admins"], getOptions },
+    details: { accessGroups: ["members", "guests", "admins"] },
+    form: {
+      accessGroups: ["members", "guests", "admins"]
+    },
+    menuItem: {
+      groups: ["admins", "guests", "members"]
+    },
+    generateUI: false // we provide our own UI
   },
-  menuItem: {
-    groups: ["admins", "guests", "members"]
-  },
-  generateUI: false // we provide our own UI
-  // Some options are overridable for a specific collection
-  // Articles: { accessGroups: ... }
-});
+  {
+    // Some options are overridable for a specific collection
+    // Articles: { accessGroups: ... }
+  }
+);
 
 // make collections validated
 collections.forEach(collection => {
