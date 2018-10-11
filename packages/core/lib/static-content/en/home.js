@@ -4,7 +4,10 @@ This application is an _awesome_ demo of the equally _awesome_ JavaScript framew
 
 It could serve as basis or an inspiration for your own application, especially if you want to build an admin dashboard, an item catalog or any other kind of backoffice application. Thus, it gave birth to a few generic packages:
 
-- [vulcan-backoffice-builder](https://github.com/lbke/vulcan-backoffice-builder): helpers to quickly generate administration pages
+- [vulcan-backoffice-builder](https://github.com/lbke/vulcan-backoffice-builder): helpers to quickly generate administration pages.
+
+We intentionally made the Admin pages public for the demonstration. Your data stay private, until your submission is validated by a moderator, so don't hesitate to play with the forms.
+
 - [vulcan-users-manager](https://github.com/lbke/vulcan-users-manager): users creation and administration
 - [vulcan-menu](https://github.com/lbke/vulcan-menu): menu items global registration, to allow package based navigation management
 - [vulcan-validation-workflows](https://github.com/lbke/vulcan-validation-workflows): allow to setup document moderation workflows

@@ -1,4 +1,5 @@
 import "./routes";
+import "./menu";
 import "./components";
 
 import "./schema/collection.js";

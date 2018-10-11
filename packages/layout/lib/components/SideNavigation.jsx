@@ -31,7 +31,7 @@ const styles = theme => ({
 
 class SideNavigation extends React.Component {
   state = {
-    isOpen: { admin: true }
+    isOpen: { admin: false }
   };
 
   toggle = item => {
@@ -69,9 +69,9 @@ class SideNavigation extends React.Component {
         </List>
         {basicMenuItems.length > 0 && (
           <List>
-            {basicMenuItems.map(({ id, label, path, labelToken }) => (
+            {basicMenuItems.map(({ name, label, path, labelToken }) => (
               <ListItem
-                key={id}
+                key={name}
                 button
                 onClick={() => browserHistory.push(path)}
               >
@@ -101,9 +101,9 @@ class SideNavigation extends React.Component {
                 transitionduration="auto"
                 unmountOnExit
               >
-                {adminMenuItems.map(({ label, path, labelToken, id }) => (
+                {adminMenuItems.map(({ name, label, path, labelToken }) => (
                   <ListItem
-                    key={id}
+                    key={name}
                     button
                     onClick={() => browserHistory.push(path)}
                   >

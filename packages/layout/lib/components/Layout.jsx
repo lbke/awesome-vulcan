@@ -11,7 +11,7 @@ const drawerWidth = 240;
 const topBarHeight = 100;
 
 const styles = theme => {
-  const contentPadding = theme.spacing.unit * 4
+  const contentPadding = theme.spacing.unit * 4;
   return {
     "@global": {
       html: {
@@ -43,7 +43,8 @@ const styles = theme => {
     drawerHeader: {
       height: `${topBarHeight}px !important`,
       minHeight: `${topBarHeight}px !important`,
-      position: "relative !important"
+      position: "relative !important",
+      backgroundColor: "#3A7bd5"
     },
     content: {
       padding: contentPadding,
@@ -67,7 +68,7 @@ const styles = theme => {
         duration: theme.transitions.duration.enteringScreen
       })
     }
-  }
+  };
 };
 
 class Layout extends React.Component {
