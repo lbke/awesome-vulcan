@@ -15,14 +15,15 @@ const styles = {
     textAlign: "center"
   },
   img: {
-    maxWidth: "100%"
+    maxWidth: "100%",
+    width: "256px"
   }
 };
 class Home extends PureComponent {
   render() {
     const { classes, currentUser } = this.props;
     return (
-      <Grid container>
+      <Grid alignItems="center" container spacing={16}>
         <Grid item lg={6} md={3} sm={12} className={classes.imgWrapper}>
           <img
             className={classes.img}
@@ -31,7 +32,6 @@ class Home extends PureComponent {
           />
         </Grid>
         <Grid item lg={6} md={9} sm={12}>
-          {homeContent && <Components.Markdown source={homeContent} />}
           {!currentUser ? (
             <div>
               <Typography variant="headline">
@@ -46,6 +46,9 @@ class Home extends PureComponent {
               </Typography>
             </div>
           )}
+        </Grid>
+        <Grid item sm={12} xl={6}>
+          {homeContent && <Components.Markdown source={homeContent} />}
         </Grid>
       </Grid>
     );
