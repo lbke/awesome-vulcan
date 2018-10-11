@@ -10,6 +10,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import LinkButton from "./LinkButton";
+import moment from "moment";
 
 const styles = theme => ({
   card: {
@@ -54,7 +55,9 @@ const VideoItem = ({ item: { title, link, createdAt }, classes }) => (
           <LinkButton key={link} href={link} />
         </Grid>
         <Grid item className={classes.dateWrapper}>
-          <Typography variant="caption">{createdAt}</Typography>
+          <Typography variant="caption">
+            {moment(createdAt).format("ll")}
+          </Typography>
         </Grid>
       </Grid>
     </CardActions>
