@@ -79,7 +79,7 @@ const withMultiOptions = {
   collectionName: "Applications",
   limit: 10,
   terms: {
-    selector: { _valid: { $eq: true } }
+    view: "validOnlyView"
   }
 };
 registerComponent({
