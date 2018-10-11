@@ -5,8 +5,9 @@ addStrings("en", {
   "core.home.loggedIn": "Now you are logged in, you can proposing resources.",
   // vulcan-material-ui
   "common.load_more": "Load more",
+  "common.propose": "Submit",
   "core.application.title": "Built with Vulcan.js",
   "core.article.title": "They talk about it",
   "core.package.title": "Open source packages for Vulcan.js",
-  "core.video.title": "Videos about Vulcan.js",
+  "core.video.title": "Videos about Vulcan.js"
 });

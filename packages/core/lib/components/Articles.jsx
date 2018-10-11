@@ -63,6 +63,7 @@ const ArticleItem = ({ item: { title, link, createdAt }, classes }) => (
 const StyledArticleItem = withStyles(styles)(ArticleItem);
 const Articles = ({ classes, ...otherProps }) => (
   <Components.ResultsGrid
+    createPath="/admin/articles/create"
     titleToken="core.article.title"
     ItemComponent={StyledArticleItem}
     {...otherProps}

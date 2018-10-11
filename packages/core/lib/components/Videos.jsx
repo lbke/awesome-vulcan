@@ -63,6 +63,7 @@ const VideoItem = ({ item: { title, link, createdAt }, classes }) => (
 const StyledVideoItem = withStyles(styles)(VideoItem);
 const Videos = ({ classes, ...otherProps }) => (
   <Components.ResultsGrid
+    createPath="/admin/packages/create"
     titleToken="core.video.title"
     ItemComponent={StyledVideoItem}
     {...otherProps}

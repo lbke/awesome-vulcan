@@ -65,6 +65,7 @@ const PackageItem = ({
 const StyledPackageItem = withStyles(styles)(PackageItem);
 const Packages = ({ classes, ...otherProps }) => (
   <Components.ResultsGrid
+    createPath="/admin/packages/create"
     titleToken="core.package.title"
     ItemComponent={StyledPackageItem}
     {...otherProps}

@@ -32,6 +32,8 @@ scratch
 .meteor/meteorite
 mup.json
 
+production.settings.json
+
 packages_update.py
 
 versions

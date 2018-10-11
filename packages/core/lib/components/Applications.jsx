@@ -66,6 +66,7 @@ const StyledApplicationItem = withStyles(styles)(ApplicationItem);
 const Applications = ({ classes, ...otherProps }) => (
   <Components.ResultsGrid
     titleToken="core.application.title"
+    createPath="/admin/applications/create"
     ItemComponent={StyledApplicationItem}
     {...otherProps}
   />
