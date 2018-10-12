@@ -21,7 +21,5 @@ _[Built with love by LBKE](https://github.com/lbke)_
 ## Roadmap
 
 - Allow to share schemas
-- Improve the DataTable field selection when displaying data
 - i18n of menu items and of form inputs
 - fix form error message
-- fix DataTable load more button

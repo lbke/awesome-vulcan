@@ -1,6 +1,8 @@
-import { setupCollectionAdminPages } from "meteor/vulcan:backoffice-builder";
-import { setupDocumentValidation, getValidationView } from "meteor/vulcan:validation-workflows";
-import { registerMenuItem } from "meteor/vulcan:menu";
+import { setupBackoffice } from "meteor/vulcan:backoffice-builder";
+import {
+  setupDocumentValidation,
+  getValidationView
+} from "meteor/vulcan:validation-workflows";
 import Application from "./application/collection";
 import Article from "./article/collection";
 import Company from "./company/collection";
@@ -18,39 +20,38 @@ const collections = [
   //Schema,
   Video
 ];
-// create components and pages
-collections.forEach(collection => {
-  // get the terms depending on the user (guests/members can't see invalid documents)
-  const getOptions = (currentUser) => {
-    const view = getValidationView(currentUser)
-    return view ? {
-      terms: {
-        view
+
+const getOptions = currentUser => {
+  const view = getValidationView(currentUser);
+  return view
+    ? {
+        terms: {
+          view
+        }
       }
-    } : undefined
-  }
-  setupCollectionAdminPages(collection, {
+    : undefined;
+};
+
+setupBackoffice(
+  collections,
+  {
+    basePath: undefined,
+    // for all collections
     list: { accessGroups: ["members", "guests", "admins"], getOptions },
     details: { accessGroups: ["members", "guests", "admins"] },
     form: {
       accessGroups: ["members", "guests", "admins"]
-    }
-  });
-});
-
-// add routes to menu
-collections.forEach(collection => {
-  const typeName = collection.options.typeName;
-  const collectionName = collection.options.collectionName;
-  const lowerTypeName = typeName.toLowerCase();
-  const lowerCollectionName = collectionName.toLowerCase();
-  registerMenuItem(lowerTypeName, {
-    label: typeName,
-    path: `/${lowerCollectionName}`,
-    groups: ["admins", "guests", "members"]
-    //parent: "admin"
-  });
-});
+    },
+    menuItem: {
+      groups: ["admins", "guests", "members"]
+    },
+    generateUI: false // we provide our own UI
+  },
+  {
+    // Some options are overridable for a specific collection
+    // Articles: { accessGroups: ... }
+  }
+);
 
 // make collections validated
 collections.forEach(collection => {

@@ -26,9 +26,10 @@ const ArrayOfNestedItem = (
       <Grid className={classes.inputWrapper} item style={{ flexGrow: 1 }}>
         {
           <Components.FormComponent
-            key={field.name}
+            key={name}
             {...props}
-            {...field}
+            {...(field || {})}
+            name={name}
             path={path}
             itemIndex={itemIndex}
             hideLabel={true}

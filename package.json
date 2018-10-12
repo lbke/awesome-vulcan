@@ -1,16 +1,18 @@
 {
   "name": "awesome-vulcan",
-  "version": "1.11.2",
+  "version": "1.12.8",
   "engines": {
     "npm": "^3.0"
   },
   "scripts": {
     "prestart": "node .vulcan/prestart_vulcan.js",
     "start": "meteor --settings settings.json",
+    "start-prod": "meteor --settings production.settings.json --production",
+    "deploy": "cd .deploy && METEOR_PACKAGE_DIRS=$METEOR_PACKAGE_DIRS mup deploy",
     "lint": "eslint --cache --ext .jsx,js packages"
   },
   "dependencies": {
-    "@babel/runtime": "^7.0.0-beta.46",
+    "@babel/runtime": "^7.1.2",
     "@material-ui/core": "^1.5.0",
     "analytics-node": "^2.1.1",
     "apollo-client": "^1.2.2",

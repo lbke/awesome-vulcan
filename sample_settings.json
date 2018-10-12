@@ -1,14 +1,13 @@
 {
   "public": {
-
     "title": "Vulcan.js",
-    "tagline":"The React/GraphQL Full-stack Framework",
+    "tagline": "The React/GraphQL Full-stack Framework",
 
     "faviconUrl": "/favicon.ico",
 
     "locale": "en"
-
   },
+  "muiTheme": "AwesomeVulcanDefault",
 
   "defaultEmail": "hello@world.com",
   "mailUrl": "smtp://username%40yourdomain.mailgun.org:yourpassword123@smtp.mailgun.org:587/",
