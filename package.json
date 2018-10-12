@@ -7,7 +7,8 @@
   "scripts": {
     "prestart": "node .vulcan/prestart_vulcan.js",
     "start": "meteor --settings settings.json",
-    "start-prod": "meteor --settings production.settings.json --production",
+    "start-prod": "meteor --settings .deploy/settings.json --production",
+    "start-prod-settings": "meteor --settings .deploy/settings.json",
     "deploy": "cd .deploy && METEOR_PACKAGE_DIRS=$METEOR_PACKAGE_DIRS mup deploy",
     "lint": "eslint --cache --ext .jsx,js packages"
   },
@@ -20,6 +21,7 @@
     "apollo-errors": "^1.9.0",
     "apollo-server-express": "^1.3.6",
     "autosuggest-highlight": "^3.1.1",
+    "aws-sdk": "^2.333.0",
     "babel-runtime": "^6.26.0",
     "bcrypt": "^0.8.7",
     "body-parser": "^1.18.2",

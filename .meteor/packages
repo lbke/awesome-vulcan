@@ -27,3 +27,5 @@ vulcan:material-ui-form-inputs
 vulcan:validation-workflows
 vulcan:backoffice-builder
 vulcan:debug
+
+cron
