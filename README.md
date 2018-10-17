@@ -18,8 +18,17 @@ Now, all you have to do is sign up and test!
 
 _[Built with love by LBKE](https://github.com/lbke)_
 
+## Some Awesome features
+
+- Example of cron setup to automatically backup the Mongo database to AWS S3 every day on midnight. Based on Vulcan newsletter cron example.
+
 ## Roadmap
 
 - Allow to share schemas
-- i18n of menu items and of form inputs
+- Allow voting
+- Add notification/newsletter
+- Setup forgot/change password emails
+- Plug Sentry
+- Plug Google Analytics (with DGPR compliancy, of course)
+- i18n of menu items and form inputs
 - fix form error message

@@ -13,16 +13,19 @@ const job = () => {
   try {
     console.log("*** Backup mongo database");
     // STEP 1: generate the dump and zip it
-    const mongoUrl = process.env.MONGO_URL;
+    //const mongoUrl = process.env.MONGO_URL;
     const folderName = `mongodump-${execSync('printf `date +"%m-%d-%y"`')}`;
     const savePath = `/tmp/${folderName}`;
     const mongodumpArgs = `--out ${savePath}`;
-    const zipPath = `/tmp/${folderName}.zip`;
-    const zipArgs = `${zipPath} ${savePath}`;
+    const zipFileName = `${folderName}.zip`;
+    const zipPath = `/tmp/${zipFileName}`;
+    const zipArgs = `-r ${zipPath} ${folderName}`;
     const mongodumpCmd = `mongodump ${mongodumpArgs}`;
-    const zipCmd = `zip ${zipArgs}`;
+    // we can't use zip with absolute path (otherwise folder structure is messay)
+    // we must cd to the correct folder instead
+    const zipCmd = `cd /tmp && zip ${zipArgs}`;
     const script = [mongodumpCmd, zipCmd].join(" && ");
-    // Using spawn:
+    // Using spawn instead of exec:
     // mongodump.stdout.on("data", function(data) {
     //   console.log("stdout: " + data);
     // });
@@ -35,7 +38,40 @@ const job = () => {
     // ...
     // })
 
-    const mongodump = exec(script, function() {
+    const saveToS3 = (data, cb) => {
+      const s3 = new AWS.S3({ apiVersion: "2006-03-01" });
+      const base64data = new Buffer(data, "binary");
+      const params = {
+        Bucket: "awesome-vulcan",
+        Key: `mongo-backups/${zipFileName}`,
+        Body: base64data
+      };
+      console.log(
+        "*** Sending MongoDB dump to S3...",
+        params.Bucket,
+        params.Key
+      );
+      s3.putObject(params, (err, data) => {
+        cb(err, data);
+      });
+    };
+    const onFileRead = async (err, data) => {
+      if (err) {
+        console.log("*** Could not open MongoDB dump file", err);
+        return;
+      }
+      //
+      saveToS3(data, (err, data) => {
+        if (err) {
+          console.log("*** Could not send MongoDB dump to AWS S3", err);
+        } else {
+          console.log("*** Successfully backed up MongoDB Data");
+        }
+        //  // STEP 3: email on success OR failure
+        //  // TODO
+      });
+    };
+    const mongodumpProcess = exec(script, function() {
       // TODO: handle error, email if needed
       // STEP 2: push the dump to AWS Glacier
       // @see https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/glacier-example-uploadrchive.html
@@ -44,27 +80,9 @@ const job = () => {
       AWS.config.update({
         region: Meteor.settings.AWS.REGION
       });
-      console.log(AWS.config.credentials);
 
-      const glacier = new AWS.Glacier({ apiVersion: "2012-06-01" });
-      fs.readFile(zipPath, function(err, data) {
-        if (err) {
-          console.log(err);
-          return;
-        }
-        const base64data = new Buffer(data, "binary");
-        const params = {
-          vaultName: "awesome-vulcan",
-          accountId: Meteor.settings.AWS.ACCOUNT_ID,
-          body: base64data
-        };
-        glacier.uploadArchive(params, (err, data) => {
-          if (err) console.log("Error uploading archive!", err);
-          else console.log("Archive ID", data.archiveId);
-          // STEP 3: email on success OR failure
-          // TODO
-        });
-      });
+      //const glacier = new AWS.Glacier({ apiVersion: "2012-06-01" });
+      fs.readFile(zipPath, onFileRead);
     });
   } catch (err) {
     console.log("*** ERROR: could not backup mongo database");
@@ -72,7 +90,11 @@ const job = () => {
   }
 };
 
-job();
+// debug
+//if (process.env === "development") {
+//  console.log("Running MongoDB job");
+//  job();
+//}
 registerCron({
   frequencySettingName: "mongoBackup.frequency",
   timeSettingName: "mongoBackup.time",

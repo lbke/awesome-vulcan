@@ -9,7 +9,7 @@ import { getSetting, registerSetting } from "meteor/vulcan:core";
 const registerCron = ({
   frequencySettingName,
   timeSettingName,
-  defaultFrequency = [2, 4, 6],
+  defaultFrequency = [1, 2, 3, 4, 5, 6], // 1 = sunday
   defaultTime = "02:00",
   debug = false,
   name,
