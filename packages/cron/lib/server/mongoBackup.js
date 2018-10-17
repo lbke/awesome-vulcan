@@ -19,9 +19,11 @@ const job = () => {
     const mongodumpArgs = `--out ${savePath}`;
     const zipFileName = `${folderName}.zip`;
     const zipPath = `/tmp/${zipFileName}`;
-    const zipArgs = `-r ${zipPath} ${savePath}`;
+    const zipArgs = `-r ${zipPath} ${folderName}`;
     const mongodumpCmd = `mongodump ${mongodumpArgs}`;
-    const zipCmd = `zip ${zipArgs}`;
+    // we can't use zip with absolute path (otherwise folder structure is messay)
+    // we must cd to the correct folder instead
+    const zipCmd = `cd /tmp && zip ${zipArgs}`;
     const script = [mongodumpCmd, zipCmd].join(" && ");
     // Using spawn instead of exec:
     // mongodump.stdout.on("data", function(data) {
@@ -88,8 +90,11 @@ const job = () => {
   }
 };
 
-console.log("running job");
-job();
+// debug
+//if (process.env === "development") {
+//  console.log("Running MongoDB job");
+//  job();
+//}
 registerCron({
   frequencySettingName: "mongoBackup.frequency",
   timeSettingName: "mongoBackup.time",
