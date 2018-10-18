@@ -27,10 +27,13 @@ The Mongo database is saved daily in a S3 Bucket. Old backups are then transferr
 ## Roadmap
 
 - Allow to share schemas
-- Allow voting
-- Add notification/newsletter
+- Allow upvoting/downvoting and sorting from new/best
+- Add notifications (email notification and in-app notifications), and newsletter
 - Setup forgot/change password emails
+- Add 3rd party auth, especially with Github
 - Plug Sentry
+- Plug a mail system
 - Plug Google Analytics (with DGPR compliancy, of course)
 - i18n of menu items and form inputs
 - fix form error message
+- Allow exporting the list of resources in the .md format

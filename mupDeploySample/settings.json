@@ -1,0 +1,41 @@
+// DO NOT TRACK THE `.deploy` FOLDER! IT CONTAINS SENSITIVE INFORMATION!
+{
+  "public": {
+    "title": "Awesome Vulcan",
+    "tagline": "Vulcan.js resources repository",
+
+    "faviconUrl": "/favicon.ico",
+
+    "locale": "en",
+
+    "muiTheme": "AwesomeVulcanDefault"
+  },
+  // will automatically create a first admin user with this config
+  "adminEmail": "your@email.com",
+  "adminPassword": "XXXXXX",
+
+  // email adresse used by the app as a default
+  "defaultEmail": "hello@world.com",
+  // your smtp server
+  "mailUrl": "smtp://username%40yourdomain.mailgun.org:yourpassword123@smtp.mailgun.org:587/",
+
+  // Material UI Theme name (needs to be registered first)
+  "muiTheme": "AwesomeVulcanDefault",
+
+  // oAuth
+  "oAuth": {
+    "twitter": {
+      "consumerKey": "foo",
+      "secret": "bar"
+    },
+    "facebook": {
+      "appId": "foo",
+      "secret": "bar"
+    }
+  },
+  // AWS Config
+  // Credentials are setup using env variables (see mup.js)
+  "AWS": {
+    "REGION": "eu-west-3"
+  }
+}
