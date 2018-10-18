@@ -1,4 +1,4 @@
-import WebApp from "meteor/webapp";
+import { WebApp } from "meteor/webapp";
 //@see https://blog.wax-o.com/2017/11/meteor-galaxy-redirect-non-www-to-www-with-ssl-and-https/
 // TODO: replace with a mup config if possible to get better perfs
 WebApp.rawConnectHandlers.use((req, res, next) => {
