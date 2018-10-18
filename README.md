@@ -18,9 +18,11 @@ Now, all you have to do is sign up and test!
 
 _[Built with love by LBKE](https://github.com/lbke)_
 
-## Some Awesome features
+## Deployment
 
-- Example of cron setup to automatically backup the Mongo database to AWS S3 every day on midnight. Based on Vulcan newsletter cron example.
+Awesome Vulcan is hosted on AWS, and rely on [Meteor Up](http://meteor-up.com) for deployment. We provide an example `.deploy` folder to reproduce our setup.
+
+The Mongo database is saved daily in a S3 Bucket. Old backups are then transferred to Glacier (this can be setup in the AWS Console directly using transition rules).
 
 ## Roadmap
 
