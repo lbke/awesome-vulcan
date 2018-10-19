@@ -1,10 +1,9 @@
 Package.describe({
-  name: 'ui',
+  name: "ui"
 });
 
-Package.onUse((api) => {
-  api.use(['vulcan:core']);
+Package.onUse(api => {
+  api.use(["vulcan:core"]);
 
-api.mainModule('lib/server/main.js', 'server');
-api.mainModule('lib/client/main.js', 'client');
+  api.mainModule("lib/client/main.js", "client");
 });

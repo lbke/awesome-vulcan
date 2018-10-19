@@ -6,10 +6,12 @@ import { FormattedMessage } from "meteor/vulcan:i18n";
 import { withStyles } from "@material-ui/core/styles";
 
 import PlusIcon from "mdi-material-ui/Plus";
+import MagnifyIcon from "mdi-material-ui/Magnify";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
+import InputAdornment from "@material-ui/core/InputAdornment";
 
 import { Link } from "react-router";
 import { intlShape } from "meteor/vulcan:i18n";
@@ -52,7 +54,7 @@ const ResultsGrid = (
   const hasMore = count < totalCount;
 
   return (
-    <Grid container spacing={8}>
+    <Grid container spacing={16}>
       <Grid item xs={12}>
         <Grid container>
           <Grid item className={classes.titleWrapper}>
@@ -78,6 +80,13 @@ const ResultsGrid = (
           placeholder={intl.formatMessage({ id: "common.search" }) + "..."}
           value={query}
           onChange={onQueryChange}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <MagnifyIcon />
+              </InputAdornment>
+            )
+          }}
         />
       </Grid>
       <Grid item xs={12}>
