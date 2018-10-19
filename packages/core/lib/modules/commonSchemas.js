@@ -1,6 +1,7 @@
 export const name = {
   type: String,
   optional: false,
+  searchable: true,
   label: "Name",
   canRead: ["guests"],
   canUpdate: ["admins", "members"],
@@ -9,6 +10,7 @@ export const name = {
 export const title = {
   type: String,
   optional: false,
+  searchable: true,
   label: "Title",
   canRead: ["guests"],
   canUpdate: ["admins", "members"],
@@ -18,6 +20,7 @@ export const description = {
   type: String,
   label: "Description",
   optional: false,
+  searchable: true,
   canRead: ["guests"],
   canUpdate: ["admins", "members"],
   canCreate: ["admins", "members"],
