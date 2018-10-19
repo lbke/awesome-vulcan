@@ -26,7 +26,10 @@ The Mongo database is saved daily in a S3 Bucket. Old backups are then transferr
 
 ## Roadmap
 
+If you begin with Vulcan, taking care of one of those features is a good way to learn. They are simple enough and can be based on Vulcan Starter example packages or even on Vulcan core feature.
+
 - Allow to share schemas
+- Rewrite ResultsGrid to use the DataTable (need to update the Vulcan component to allow this)
 - Allow upvoting/downvoting and sorting from new/best
 - Add notifications (email notification and in-app notifications), and newsletter
 - Setup forgot/change password emails
@@ -37,3 +40,4 @@ The Mongo database is saved daily in a S3 Bucket. Old backups are then transferr
 - i18n of menu items and form inputs
 - fix form error message
 - Allow exporting the list of resources in the .md format
+- Add responsiveness
