@@ -3,6 +3,7 @@ import React from "react";
 import { registerComponent, withMulti, Components } from "meteor/vulcan:core";
 
 import { withStyles } from "@material-ui/core/styles";
+import withSearch from "./withSearch";
 
 import GenericItem from "./GenericItem";
 
@@ -39,6 +40,6 @@ const withMultiOptions = {
 registerComponent({
   name: "Applications",
   component: Applications,
-  hocs: [[withMulti, withMultiOptions]]
+  hocs: [withSearch, [withMulti, withMultiOptions]]
 });
 export default Applications;

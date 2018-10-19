@@ -5,6 +5,7 @@ import { registerComponent, withMulti, Components } from "meteor/vulcan:core";
 import { withStyles } from "@material-ui/core/styles";
 
 import GenericItem from "./GenericItem";
+import withSearch from "./withSearch";
 
 const styles = theme => ({});
 
@@ -32,6 +33,6 @@ const withMultiOptions = {
 registerComponent({
   name: "Videos",
   component: Videos,
-  hocs: [[withMulti, withMultiOptions]]
+  hocs: [withSearch, [withMulti, withMultiOptions]]
 });
 export default Videos;
