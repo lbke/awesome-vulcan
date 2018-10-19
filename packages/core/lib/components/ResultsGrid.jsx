@@ -1,6 +1,10 @@
 import React from "react";
 
-import { registerComponent, Components } from "meteor/vulcan:core";
+import {
+  registerComponent,
+  Components,
+  withCurrentUser
+} from "meteor/vulcan:core";
 import { FormattedMessage } from "meteor/vulcan:i18n";
 
 import { withStyles } from "@material-ui/core/styles";
@@ -11,6 +15,7 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
+import Tooltip from "@material-ui/core/Tooltip";
 import InputAdornment from "@material-ui/core/InputAdornment";
 
 import { Link } from "react-router";
@@ -45,14 +50,14 @@ const ResultsGrid = (
     title,
     titleToken,
     cols = 2,
-    createPath
+    createPath,
+    currentUser
   },
   { intl }
 ) => {
   if (loading) return <Components.Loading />;
 
   const hasMore = count < totalCount;
-
   return (
     <Grid container spacing={16}>
       <Grid item xs={12}>
@@ -63,15 +68,26 @@ const ResultsGrid = (
             </Typography>
           </Grid>
           <Grid item>
-            <Button
-              component={Link}
-              to={createPath}
-              variant="contained"
-              color="secondary"
+            <Tooltip
+              title={
+                !currentUser
+                  ? "Only members can propose new resources"
+                  : "Propose your own!"
+              }
             >
-              <PlusIcon />
-              <FormattedMessage id="common.propose" />
-            </Button>
+              <span>
+                <Button
+                  disabled={!currentUser}
+                  component={Link}
+                  to={createPath}
+                  variant="contained"
+                  color="secondary"
+                >
+                  <PlusIcon />
+                  <FormattedMessage id="common.propose" />
+                </Button>
+              </span>
+            </Tooltip>
           </Grid>
         </Grid>
       </Grid>
@@ -127,6 +143,6 @@ ResultsGrid.contextTypes = {
 registerComponent({
   name: "ResultsGrid",
   component: ResultsGrid,
-  hocs: [[withStyles, styles]]
+  hocs: [withCurrentUser, [withStyles, styles]]
 });
 export default ResultsGrid;
