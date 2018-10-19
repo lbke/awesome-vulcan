@@ -6,6 +6,8 @@ addStrings("en", {
   // vulcan-material-ui
   "common.load_more": "Load more",
   "common.propose": "Submit",
+  "common.search": "Search",
+  "common.no_results": "No results found",
   "core.application.title": "Built with Vulcan.js",
   "core.article.title": "They talk about it",
   "core.package.title": "Open source packages for Vulcan.js",

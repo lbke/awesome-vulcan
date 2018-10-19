@@ -32,6 +32,7 @@ export const LinkButton = ({ href }) => {
       title="Open in new tab"
       variant="fab"
       color="primary"
+      style={{ height: "36px", width: "36px" }}
     >
       {selectedIcon}
     </IconButton>

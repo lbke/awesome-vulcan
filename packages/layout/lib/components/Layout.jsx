@@ -11,7 +11,7 @@ const drawerWidth = 240;
 const topBarHeight = 100;
 
 const styles = theme => {
-  const contentPadding = theme.spacing.unit * 4;
+  const contentPadding = theme.spacing.unit * 2;
   return {
     "@global": {
       html: {
@@ -38,7 +38,10 @@ const styles = theme => {
     drawerPaper: {
       position: "relative",
       width: drawerWidth,
-      backgroundColor: theme.palette.background[200]
+      backgroundColor: theme.palette.background[200],
+      // TODO: use an elevation instead?
+      boxShadow:
+        "0px 0px 6px -2px #000000, 2px 0px 4px -1px rgba(0, 0, 0, 0.2), 4px 0px 5px 0px rgba(0, 0, 0, 0.14), 1px 0px 10px 0px rgba(0, 0, 0, 0.12)"
     },
     drawerHeader: {
       height: `${topBarHeight}px !important`,
@@ -48,6 +51,7 @@ const styles = theme => {
     },
     content: {
       padding: contentPadding,
+      paddingLeft: contentPadding + 8,
       width: "100%",
       marginLeft: -drawerWidth,
       flexGrow: 1,
@@ -104,6 +108,7 @@ class Layout extends React.Component {
             variant="persistent"
             classes={{ paper: classes.drawerPaper }}
             open={isOpen.sideNav}
+            //elevation={12}
           >
             <AppBar
               className={classes.drawerHeader}

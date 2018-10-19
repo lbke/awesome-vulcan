@@ -9,6 +9,7 @@ import ChevronLeftIcon from "mdi-material-ui/ChevronLeft";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { getSetting, Components, registerComponent } from "meteor/vulcan:core";
 import classNames from "classnames";
+import GithubButton from "./GithubButton";
 
 const drawerWidth = 240;
 const topBarHeight = 100;
@@ -113,6 +114,7 @@ const Header = (props, context) => {
           </Typography>
         </div>
         <Components.UserIndicator />
+        <GithubButton />
       </Toolbar>
     </AppBar>
   );
