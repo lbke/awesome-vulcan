@@ -23,8 +23,7 @@ vulcan:menu
 vulcan:users-manager
 vulcan:i18n
 vulcan:i18n-fr-fr
-vulcan:material-ui-form-inputs
-vulcan:material-ui-layouts
+vulcan:more-material-ui
 vulcan:validation-workflows
 vulcan:backoffice-builder
 vulcan:debug
