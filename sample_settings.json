@@ -7,6 +7,9 @@
 
     "locale": "en"
   },
+  "server": {
+    "forceWwwRedirect": true
+  },
   "muiTheme": "AwesomeVulcanDefault",
 
   "defaultEmail": "hello@world.com",
