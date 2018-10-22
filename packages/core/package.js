@@ -8,11 +8,10 @@ Package.onUse(api => {
     "vulcan:accounts",
     "vulcan:i18n",
     "config",
-    "vulcan:material-ui-layouts",
+    "vulcan:more-material-ui",
     "vulcan:backoffice-builder",
     "vulcan:validation-workflows",
-    "vulcan:i18n-fr-fr",
-    "vulcan:material-ui-form-inputs"
+    "vulcan:i18n-fr-fr"
   ]);
 
   api.mainModule("lib/server/main.js", "server");
