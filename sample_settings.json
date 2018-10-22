@@ -5,7 +5,14 @@
 
     "faviconUrl": "/favicon.ico",
 
-    "locale": "en"
+    "locale": "en",
+    "layout": {
+      "headerLogoUrl": "/img/awesome-vulcan-logo_64.png"
+    }
+  },
+  "admin": {
+    "email": "admin@admin.admin",
+    "password": "adminadmin"
   },
   "server": {
     "forceWwwRedirect": true

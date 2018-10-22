@@ -8,11 +8,17 @@
 
     "locale": "en",
 
-    "muiTheme": "AwesomeVulcanDefault"
+    "muiTheme": "AwesomeVulcanDefault",
+
+    "layout": {
+      "headerLogoUrl": "/img/awesome-vulcan-logo_64.png"
+    }
   },
   // will automatically create a first admin user with this config
-  "adminEmail": "your@email.com",
-  "adminPassword": "XXXXXX",
+  "admin": {
+    "email": "your@email.com",
+    "password": "XXXXXX"
+  },
 
   // email adresse used by the app as a default
   "defaultEmail": "hello@world.com",

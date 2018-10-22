@@ -18,7 +18,6 @@ accounts-password@1.5.1
 core
 config
 ui
-layout
 vulcan:menu
 vulcan:users-manager
 vulcan:i18n
