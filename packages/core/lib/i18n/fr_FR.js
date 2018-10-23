@@ -7,6 +7,8 @@ addStrings("fr", {
   // vulcan-material-ui
   "common.load_more": "Voir plus",
   "common.propose": "Proposer",
+  "common.search": "Filtrer",
+  "common.no_results": "Aucun résultat",
   "core.application.title": "Ils utilisent Vulcan.js",
   "core.article.title": "Ils en parlent",
   "core.package.title": "Packages open source pour Vulcan.js",

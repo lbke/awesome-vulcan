@@ -18,12 +18,13 @@ accounts-password@1.5.1
 core
 config
 ui
-layout
 vulcan:menu
 vulcan:users-manager
 vulcan:i18n
 vulcan:i18n-fr-fr
-vulcan:material-ui-form-inputs
+vulcan:more-material-ui
+vulcan:more-helpers
 vulcan:validation-workflows
 vulcan:backoffice-builder
+vulcan:mongo-backup
 vulcan:debug

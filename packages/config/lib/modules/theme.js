@@ -1,12 +1,9 @@
 import { registerSetting } from "meteor/vulcan:core";
 import {
-  registerTheme,
-  getCurrentTheme
+  registerTheme
+  //getCurrentTheme
 } from "meteor/erikdakoda:vulcan-material-ui";
-import indigo from "@material-ui/core/colors/indigo";
-import blue from "@material-ui/core/colors/blue";
 import pink from "@material-ui/core/colors/pink";
-import lime from "@material-ui/core/colors/lime";
 import cyan from "@material-ui/core/colors/cyan";
 import red from "@material-ui/core/colors/red";
 
