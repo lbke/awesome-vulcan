@@ -18,6 +18,31 @@ Now, all you have to do is sign up and test!
 
 _[Built with love by LBKE](https://github.com/lbke)_
 
+## Install
+
+We rely on Vulcan [2 repo install](http://docs.vulcanjs.org/#Two-Repo-Install-Optional) and work on the `devel` branch of Vulcan.
+
+```sh
+# Step 1: copy all relevant packages locally
+mkdir ./vulcan-packages # create a directory for the packages
+cd ./vulcan-packages # go to the folder
+git clone "https://github.com/lbke/vulcan-users-manager" # user management
+git clone "https://github.com/lbke/vulcan-more-helpers" # various helpers and components
+git clone "https://github.com/lbke/vulcan-more-material-ui" # material ui additionnal components/layouts
+git clone "https://github.com/lbke/vulcan-validation-workflows" # document moderation
+git clone "https://github.com/lbke/vulcan-backoffice-builder" # backoffice generation
+git clone "https://github.com/lbke/vulcan-menu" # menu management
+# save the database content daily on AWS (can be enabled/disabled through settings)
+git clone "https://github.com/lbke/vulcan-mongo-backup"
+cd ../ # back to your home folder
+# Step 2: install
+meteor npm i
+# Step 3: run
+METEOR_PACKAGE_DIRS="<path-to-your-vulcan-install>:<path-to-vulcan-packages>" meteor run
+```
+
+Please open an issue if you encounter issues while installing the app, we will try to answser as soon as possible.
+
 ## Deployment
 
 Awesome Vulcan is hosted on AWS, and rely on [Meteor Up](http://meteor-up.com) for deployment. We provide an example `.deploy` folder to reproduce our setup.

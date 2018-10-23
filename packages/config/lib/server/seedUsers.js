@@ -3,8 +3,19 @@
  */
 import { Meteor } from "meteor/meteor";
 import Users from "meteor/vulcan:users";
-import { newMutation } from "meteor/vulcan:core";
+import { newMutation, registerSetting, getSetting } from "meteor/vulcan:core";
 import { Accounts } from "meteor/accounts-base";
+
+registerSetting(
+  "admin.email",
+  undefined,
+  "Admin email (will be the first user)"
+);
+registerSetting(
+  "admin.password",
+  undefined,
+  "Admin email (will be the first user)"
+);
 
 const createUser = function(user) {
   const userWithEmails = {
@@ -34,8 +45,8 @@ const adminUsers = [
 // needs to be stored separately otherwise the password is stored in clear
 const adminPasswords = [
   {
-    email: Meteor.settings.adminEmail,
-    password: Meteor.settings.adminPassword
+    email: getSetting("admin.email"),
+    password: getSetting("admin.password")
   }
 ];
 const createUsers = function() {
