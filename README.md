@@ -27,11 +27,13 @@ We rely on Vulcan [2 repo install](http://docs.vulcanjs.org/#Two-Repo-Install-Op
 mkdir ./vulcan-packages # create a directory for the packages
 cd ./vulcan-packages # go to the folder
 git clone "https://github.com/lbke/vulcan-users-manager" # user management
-git clone "https://github.com/lbke/vulcan-more-helpers" # helpers
-git clone "https://github.com/lbke/vulcan-more-material-ui" # material ui
-git clone "https://github.com/lbke/vulcan-validation-workflows" # validation
-git clone "https://github.com/lbke/vulcan-backoffice-builder" # backoffice
-git clone "https://github.com/lbke/vulcan-menu" # manu management
+git clone "https://github.com/lbke/vulcan-more-helpers" # various helpers and components
+git clone "https://github.com/lbke/vulcan-more-material-ui" # material ui additionnal components/layouts
+git clone "https://github.com/lbke/vulcan-validation-workflows" # document moderation
+git clone "https://github.com/lbke/vulcan-backoffice-builder" # backoffice generation
+git clone "https://github.com/lbke/vulcan-menu" # menu management
+# save the database content daily on AWS (can be enabled/disabled through settings)
+git clone "https://github.com/lbke/vulcan-mongo-backup"
 cd ../ # back to your home folder
 # Step 2: install
 meteor npm i
