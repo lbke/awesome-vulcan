@@ -1,9 +1,9 @@
 import React from "react";
 
 import { registerComponent, withMulti, Components } from "meteor/vulcan:core";
+import { withSearch } from "meteor/vulcan:more-helpers";
 
 import { withStyles } from "@material-ui/core/styles";
-import withSearch from "./withSearch";
 
 import GenericItem from "./GenericItem";
 
