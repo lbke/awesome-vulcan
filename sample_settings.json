@@ -32,7 +32,11 @@
       "secret": "bar"
     }
   },
-  "enableMongoBackup": true,
+  "cron": {
+    "mongoBackup": {
+      "enable": false
+    }
+  },
   "AWS": {
     "REGION": "XXXXXXXX"
   }

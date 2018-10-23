@@ -26,6 +26,5 @@ vulcan:more-material-ui
 vulcan:more-helpers
 vulcan:validation-workflows
 vulcan:backoffice-builder
+vulcan:mongo-backup
 vulcan:debug
-
-cron

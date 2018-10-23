@@ -39,6 +39,11 @@
       "secret": "bar"
     }
   },
+  "cron": {
+    "mongoBackup": {
+      "enable": true
+    }
+  },
   // AWS Config
   // Credentials are setup using env variables (see mup.js)
   "AWS": {
