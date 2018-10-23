@@ -9,6 +9,7 @@ Package.onUse(api => {
     "vulcan:i18n",
     "config",
     "vulcan:more-material-ui",
+    "vulcan:more-helpers",
     "vulcan:backoffice-builder",
     "vulcan:validation-workflows",
     "vulcan:i18n-fr-fr"

@@ -23,6 +23,7 @@ vulcan:users-manager
 vulcan:i18n
 vulcan:i18n-fr-fr
 vulcan:more-material-ui
+vulcan:more-helpers
 vulcan:validation-workflows
 vulcan:backoffice-builder
 vulcan:debug
