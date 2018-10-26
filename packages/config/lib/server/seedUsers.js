@@ -37,7 +37,7 @@ const setPassword = function(user) {
 const adminUsers = [
   {
     username: "admin-dev",
-    email: Meteor.settings.adminEmail,
+    email: getSetting("admin.email"),
     isDummy: false,
     isAdmin: true
   }

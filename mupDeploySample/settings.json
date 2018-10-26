@@ -41,7 +41,10 @@
   },
   "cron": {
     "mongoBackup": {
-      "enable": true
+      "enable": true,
+      "aws": {
+        "bucket": "awesome-vulcan"
+      }
     }
   },
   // AWS Config
