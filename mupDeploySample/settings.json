@@ -12,7 +12,10 @@
 
     "layout": {
       "headerLogoUrl": "/img/awesome-vulcan-logo_64.png"
-    }
+    },
+
+    // Material UI Theme name (needs to be registered first)
+    "muiTheme": "AwesomeVulcanDefault"
   },
   // will automatically create a first admin user with this config
   "admin": {
@@ -24,9 +27,6 @@
   "defaultEmail": "hello@world.com",
   // your smtp server
   "mailUrl": "smtp://username%40yourdomain.mailgun.org:yourpassword123@smtp.mailgun.org:587/",
-
-  // Material UI Theme name (needs to be registered first)
-  "muiTheme": "AwesomeVulcanDefault",
 
   // oAuth
   "oAuth": {
