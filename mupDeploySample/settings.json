@@ -8,14 +8,15 @@
 
     "locale": "en",
 
-    "muiTheme": "AwesomeVulcanDefault",
-
     "layout": {
       "headerLogoUrl": "/img/awesome-vulcan-logo_64.png"
     },
 
     // Material UI Theme name (needs to be registered first)
     "muiTheme": "AwesomeVulcanDefault"
+  },
+  "server": {
+    "forceWwwRedirect": false
   },
   // will automatically create a first admin user with this config
   "admin": {

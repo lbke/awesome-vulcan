@@ -28,3 +28,4 @@ vulcan:validation-workflows
 vulcan:backoffice-builder
 vulcan:mongo-backup
 vulcan:debug
+vulcan:http-redirect

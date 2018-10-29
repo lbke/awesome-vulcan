@@ -34,6 +34,8 @@ git clone "https://github.com/lbke/vulcan-backoffice-builder" # backoffice gener
 git clone "https://github.com/lbke/vulcan-menu" # menu management
 # save the database content daily on AWS (can be enabled/disabled through settings)
 git clone "https://github.com/lbke/vulcan-mongo-backup"
+# http redirect
+git clone "https://github.com/lbke/vulcan-http-redirect"
 cd ../ # back to your home folder
 # Step 2: install
 meteor npm i

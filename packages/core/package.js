@@ -11,8 +11,10 @@ Package.onUse(api => {
     "vulcan:more-material-ui",
     "vulcan:more-helpers",
     "vulcan:backoffice-builder",
+    "vulcan:users-manager",
     "vulcan:validation-workflows",
-    "vulcan:i18n-fr-fr"
+    "vulcan:i18n-fr-fr",
+    "vulcan:http-redirect"
   ]);
 
   api.mainModule("lib/server/main.js", "server");
