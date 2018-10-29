@@ -1,4 +1,5 @@
 import { setupBackoffice } from "meteor/vulcan:backoffice-builder";
+import { enhanceBackofficeWithUsers } from "meteor/vulcan:users-manager";
 import {
   setupDocumentValidation,
   getValidationView
@@ -56,4 +57,28 @@ setupBackoffice(
 // make collections validated
 collections.forEach(collection => {
   setupDocumentValidation(collection);
+});
+
+
+enhanceBackofficeWithUsers({
+  form: {
+    newFields: [
+      "username",
+      "email",
+      "_password",
+      "defaultRestaurantId",
+      //"groups",
+      "isAdmin"
+    ],
+    editFields: [
+      "_id",
+      "createdAt",
+      "username",
+      "email",
+      "_password",
+      "defaultRestaurantId",
+      //"groups",
+      "isAdmin"
+    ]
+  }
 });

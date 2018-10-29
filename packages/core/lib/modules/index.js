@@ -10,6 +10,6 @@ import "./company/collection.js";
 import "./package/collection.js";
 import "./course/collection.js";
 
-import "./setupAdminPages";
+import "./setupBackoffice";
 
 import "./i18n.js";
