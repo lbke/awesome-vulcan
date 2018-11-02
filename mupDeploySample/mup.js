@@ -53,7 +53,20 @@ module.exports = {
 
     docker: {
       // change to 'abernix/meteord:base' if your app is using Meteor 1.4 - 1.5
-      image: "abernix/meteord:node-8.4.0-base"
+      image: "abernix/meteord:node-8.4.0-base",
+      // install mongodump to allow programmatic backups
+      buildInstructions:[
+        'RUN'
+        + ' apt-get update'
+        + ' && apt-get install -y aptitude'
+        + ' && aptitude install -y apt-transport-https libwebsockets-dev libssl-dev openssl libcurl3' // allow to download the key / need for mongo install to work
+        + ' && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4' 
+        + ' && echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.0 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.0.list'
+        + ' && apt-get update'
+        + ' && aptitude install -y mongodb-org mongodb-org-tools'
+      ]
+
+
     },
 
     // Show progress bar while uploading bundle to server
