@@ -60,25 +60,4 @@ collections.forEach(collection => {
 });
 
 
-enhanceBackofficeWithUsers({
-  form: {
-    newFields: [
-      "username",
-      "email",
-      "_password",
-      "defaultRestaurantId",
-      //"groups",
-      "isAdmin"
-    ],
-    editFields: [
-      "_id",
-      "createdAt",
-      "username",
-      "email",
-      "_password",
-      "defaultRestaurantId",
-      //"groups",
-      "isAdmin"
-    ]
-  }
-});
+enhanceBackofficeWithUsers({/* same format as setupBackoffice for options */})
