@@ -59,7 +59,6 @@ If you begin with Vulcan, taking care of one of those features is a good way to 
 - Rewrite ResultsGrid to use the DataTable (need to update the Vulcan component to allow this)
 - Allow upvoting/downvoting and sorting from new/best
 - Add notifications (email notification and in-app notifications), and newsletter
-- Setup forgot/change password emails
 - Add 3rd party auth, especially with Github
 - Plug Sentry
 - Plug a mail system
@@ -67,4 +66,3 @@ If you begin with Vulcan, taking care of one of those features is a good way to 
 - i18n of menu items and form inputs
 - fix form error message
 - Allow exporting the list of resources in the .md format
-- Add responsiveness
