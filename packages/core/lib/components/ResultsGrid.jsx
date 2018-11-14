@@ -17,6 +17,7 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Tooltip from "@material-ui/core/Tooltip";
 import InputAdornment from "@material-ui/core/InputAdornment";
+import Articles from "../modules/article/collection"
 
 import { Link } from "react-router";
 import { intlShape } from "meteor/vulcan:i18n";
@@ -59,81 +60,91 @@ const ResultsGrid = (
 
   const hasMore = count < totalCount;
   return (
-    <Grid container spacing={16}>
-      <Grid item xs={12}>
-        <Grid container>
-          <Grid item className={classes.titleWrapper}>
-            <Typography variant="display2" component="h1">
-              {title || <FormattedMessage id={titleToken} />}
-            </Typography>
-          </Grid>
-          <Grid item>
-            <Tooltip
-              title={
-                !currentUser
-                  ? "Only members can propose new resources"
-                  : "Propose your own!"
-              }
-            >
-              <span>
-                <Button
-                  disabled={!currentUser}
-                  component={Link}
-                  to={createPath}
-                  variant="contained"
-                  color="secondary"
-                >
-                  <PlusIcon />
-                  <FormattedMessage id="common.propose" />
-                </Button>
-              </span>
-            </Tooltip>
-          </Grid>
-        </Grid>
-      </Grid>
-      <Grid item xs={12}>
-        <TextField
-          placeholder={intl.formatMessage({ id: "common.search" }) + "..."}
-          value={query}
-          onChange={onQueryChange}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <MagnifyIcon />
-              </InputAdornment>
-            )
-          }}
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <Grid container spacing={16}>
-          {results && results.length ? (
-            results.map(result => (
-              <Grid key={result._id} item xs={12} md={12 / cols}>
-                <ItemComponent item={result} />
+    <Components.Datatable
+      collection={Articles}
+      canEdit={false}
+      components={{
+        DatatableLayout: ({children}) => (<Grid container spacing={16}>{children}</Grid>),
+        DatatableAbove: () => (<React.Fragment>
+          <Grid item xs={12}>
+            <Grid container>
+              <Grid item className={classes.titleWrapper}>
+                <Typography variant="display2" component="h1">
+                  {title || <FormattedMessage id={titleToken} />}
+                </Typography>
               </Grid>
-            ))
-          ) : (
-            <NoResults />
-          )}
-        </Grid>
-      </Grid>
-      <Grid item xs={12} className={classes.loadMoreWrapper}>
-        {hasMore &&
-          (loadingMore ? (
-            <Components.Loading />
-          ) : (
-            <Button
-              variant="contained"
-              color="primary"
-              size="large"
-              onClick={() => loadMore()}
-            >
-              <FormattedMessage id="common.load_more" />
-            </Button>
-          ))}
-      </Grid>
-    </Grid>
+              <Grid item>
+                <Tooltip
+                  title={
+                    !currentUser
+                      ? "Only members can propose new resources"
+                      : "Propose your own!"
+                  }
+                >
+                  <span>
+                    <Button
+                      disabled={!currentUser}
+                      component={Link}
+                      to={createPath}
+                      variant="contained"
+                      color="secondary"
+                    >
+                      <PlusIcon />
+                      <FormattedMessage id="common.propose" />
+                    </Button>
+                  </span>
+                </Tooltip>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              placeholder={intl.formatMessage({ id: "common.search" }) + "..."}
+              value={query}
+              onChange={onQueryChange}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <MagnifyIcon />
+                  </InputAdornment>
+                )
+              }}
+            />
+          </Grid>
+        </React.Fragment>
+
+        ),
+        DatatableContentsInnerLayout: ({ children }) => (
+          <Grid item xs={12}>
+            <Grid container spacing={16}>
+              {children}
+            </Grid>
+          </Grid>
+        ),
+        DatatableContentsBodyLayout: ({children}) => children,
+        DatatableContentsHeadLayout: ({children}) => null,
+        DatatableRowLayout: ({ children }) => (
+          <Grid item xs={12} md={12 / cols}>
+            {children}
+          </Grid>
+
+        ),
+        DatatableCell: ({ document }) => <ItemComponent item={document} />,
+        DatatableMoreLayout: ({ children }) => (
+          <Grid item xs={12} className={classes.loadMoreWrapper}>{children}</Grid>
+        ),
+        DatatableLoadMoreButton: ({ children }) => (
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            onClick={() => loadMore()}
+          >
+            <FormattedMessage id="common.load_more" />
+          </Button>
+        )
+      }}
+    />
   );
 };
 
