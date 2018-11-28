@@ -36,11 +36,16 @@ git clone "https://github.com/lbke/vulcan-menu" # menu management
 git clone "https://github.com/lbke/vulcan-mongo-backup"
 # http redirect
 git clone "https://github.com/lbke/vulcan-http-redirect"
-cd ../ # back to your home folder
+# Material UI for Vulcan core components
+git clone "https://github.com/ErikDakoda/vulcan-material-ui"
+
+cd ../your-app # back to your app folder
+
 # Step 2: install
 meteor npm i
+
 # Step 3: run
-METEOR_PACKAGE_DIRS="<path-to-your-vulcan-install>:<path-to-vulcan-packages>" meteor run
+METEOR_PACKAGE_DIRS="<path-to-vulcan>/packages:<path-to-local-vulcan-packages>" meteor run
 ```
 
 Please open an issue if you encounter issues while installing the app, we will try to answser as soon as possible.
