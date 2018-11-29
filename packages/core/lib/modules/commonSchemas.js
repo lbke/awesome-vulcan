@@ -57,7 +57,7 @@ export const link = {
 export const userId = {
   type: String,
   optional: true,
-  canRead: ["admins"],
+  canRead: ["admins","members"],
   resolveAs: {
     fieldName: "user",
     type: "User",
