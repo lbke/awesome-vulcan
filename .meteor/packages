@@ -29,3 +29,4 @@ vulcan:backoffice-builder
 vulcan:mongo-backup
 vulcan:debug
 vulcan:http-redirect
+tmeasday:check-npm-versions
