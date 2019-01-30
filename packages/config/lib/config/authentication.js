@@ -6,7 +6,7 @@
 import { Accounts } from "meteor/vulcan:accounts";
 //import Users from "meteor/vulcan:users";
 //import { getRoutePath } from "../modules/routes";
-import { browserHistory } from "react-router";
+import { browserHistory } from "react-router-dom";
 if (Meteor.isClient && !browserHistory) {
   console.log("browserHistory unavailable");
   browserHistory = {
