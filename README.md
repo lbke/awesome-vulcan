@@ -1,5 +1,7 @@
 # Awesome Vulcan
 
+**IMPORTANT NOTE: if you use the Apollo 2 version of Vulcan (1.13 or higher), please check the [apollo2](https://github.com/lbke/awesome-vulcan/tree/apollo2) branch**
+
 This application is an _awesome_ demo of the equally _awesome_ JavaScript framework [Vulcan.js](http://vulcanjs.org/). The functionnalities are fairly limited for the moment, however the underlying code has been built with reusability in mind.
 
 It could serve as basis or an inspiration for your own application, especially if you want to build an admin dashboard, an item catalog or any other kind of backoffice application. Thus, it gave birth to a few generic packages:
