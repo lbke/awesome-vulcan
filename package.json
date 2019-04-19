@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.1.2",
-    "@material-ui/core": "^1.5.1",
+    "@material-ui/core": "^3.9.3",
     "analytics-node": "^2.1.1",
     "apollo-client": "^1.2.2",
     "apollo-engine": "^0.5.4",
