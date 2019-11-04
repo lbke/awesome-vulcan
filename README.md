@@ -69,7 +69,7 @@ If you begin with Vulcan, taking care of one of those features is a good way to 
 - Add 3rd party auth, especially with Github
 - Plug Sentry
 - Plug a mail system
-- Plug Google Analytics (with DGPR compliancy, of course)
+- Plug Google Analytics (with GDPR compliancy, of course)
 - i18n of menu items and form inputs
 - fix form error message
 - Allow exporting the list of resources in the .md format
