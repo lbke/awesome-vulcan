@@ -36,7 +36,7 @@
     "deepmerge": "^1.2.0",
     "dot-object": "^1.7.0",
     "escape-string-regexp": "^1.0.5",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "flat": "^4.0.0",
     "formsy-react": "^0.19.5",
     "formsy-react-components": "^0.11.1",
